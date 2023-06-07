@@ -1,0 +1,23 @@
+<form class="settings" action="/edit" method="GET">
+    <section class="formLabel">
+        <div>
+            <label for="Dakoppervlak">Jou dak oppervalkte
+                <input id="Dakoppervlak" name="Dakoppervlak" type="number" value="<%= userInfo.roofSurface %>" placeholder="<%= userInfo.roofSurface %>">
+                <span>m²</span>
+            </label>
+        </div>
+    </section>
+    <section class="formLabel">
+        <div>
+            <label for="Regenpijpen">Jou aantal regenpijpen</label>
+            <input id="Regenpijpen" name="Regenpijpen" type="number" value="<%= userInfo.waterDrains %>" placeholder="<%= userInfo.waterDrains %>">
+        </div>
+    </section>
+    <section class="formLabel">
+        <div>
+            <label for="Regentonnen">Jou aantal regentonnen</label>
+            <input id="Regentonnen" name="Regentonnen" type="number" value="<%= userInfo.rainBarrels %>" placeholder="<%= userInfo.rainBarrels %>">
+        </div>
+    </section>
+    <button>Sla gegevens op</button>
+</form>

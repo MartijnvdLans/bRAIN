@@ -1,35 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rainton</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/style.css">
-</head>
+<%- include('partials/head.ejs') -%>
 <body>
-    <header>
-        <h1>Rainton</h1>
-        <img src="./images/Hamburger_icon.svg.png" alt="Hamburger Menu" id="hamburger">
-        <nav class="hidden">
-            <ul>
-                <li id="cross">X</li>
-                <li>Menu</li>
-                <li><a href="">Gegevens</a></li>
-            </ul>
-            <form action="">
-                <p>Log-In</p>
-                <input type="text" placeholder="Gebruikersnaam">
-                <input type="password" name="password" id="password" placeholder="Wachtwoord">
-                <button>Log In</button>
-                <a href="">nog geen account? Registreer hier.</a>
-            </form>
-        </nav>
-    </header>
-    <main>
+    <%- include('partials/header.ejs') -%>
+    <main id="rainton">
         <section>
             <div class="outergraph">
                 <div class="innergraph" id="rain-amount"></div>
@@ -48,10 +20,10 @@
             <ul>
                 <li>Regenton</li>
                 <li>Hoeveelheid water</li>
-                <li id="empty">Leeg Rainton</li>
+                <li id="empty"><a href="/empty">Leeg Rainton</a></li>
             </ul>
         </section>
-        <section class="popup" id="popup-1">
+        <section class="popup none" id="popup-1">
             <h3>Let op!</h3>
             <p>Je regenton begint vol te raken. Leeg de ton voordat er water wordt verspilt. Als je hem geleegd hebt, klik dan op de ‘Regenton Legen’ knop.</p>
             <button>Oke</button>
@@ -64,7 +36,7 @@
                 <button>Leeg nu!</button>
             </div>
         </section>
-        <section class="popup none" id="popup-3">
+        <section class="popup" id="popup-3">
             <h3>Let op!</h3>
             <p>Je regenton is al leeg! Wacht totdat je regenton gevuld is voor je deze gaat legen!</p>
             <button>Oke</button>

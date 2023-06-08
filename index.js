@@ -3,6 +3,7 @@ import ejs from 'ejs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
+import { getWeatherData } from './functions/weatherAPI.js';
 
 const app = express();
 const port = 3000;
@@ -28,15 +29,49 @@ let userInfo = {
     "waterDrains": null,
     "rainBarrels": null,
     "roofSurface": null,
+    "rainBarrelEmptied": false,
 }
 
-app.get('/', (req, res) => {
+function testRainCollection() {
+    if (!userInfo.rainBarrelEmptied) {
+    let fakeData = {
+      daily: {
+        precipitation_sum: [ 4.00, 3.00] // Adjust these values for different tests
+      }
+    };
+  
+    
+    let totalRain = 0;
+    fakeData.daily.precipitation_sum.forEach((precipitation) => {
+      totalRain += precipitation;
+    });
+    
+   
+    userInfo.roofSurface = 32; 
+    userInfo.rainAmount = (totalRain * userInfo.roofSurface).toFixed(1);
+    if (userInfo.rainAmount > 200) {
+        userInfo.rainAmount = 200;
+    }
+    console.log(`Total rain collected: ${userInfo.rainAmount}`);
+}
+  }
+  
+  // Run the test
+  testRainCollection();
+
+  app.get('/', (req, res) => {
+    console.log(`Rendering index page with rain amount: ${userInfo.rainAmount}`);
     if (userInfo.rainBarrels == null) {
         res.render('zero')
     } else {
-        res.render('index')
+        res.render('index', { userInfo: userInfo })
     }
-})
+});
+
+app.get('/test', (req, res) => {
+    testRainCollection(); 
+    res.render('index', { userInfo: userInfo });
+});
 
 app.get('/firstInfo', (req, res) => {
     // console.log(req.query.Dakoppervlak)
@@ -76,6 +111,27 @@ app.get('/edit', (req, res) => {
 app.get('/offline', (req, res) => {
     res.render('offline')
 })
+
+app.post('/empty', (req, res) => {
+    console.log('Emptying the rain barrel...');
+    userInfo.rainAmount = 0;
+    userInfo.rainBarrelEmptied = true; // Set this to true when the rain barrel is emptied
+    res.status(200).json({ message: "Rain barrel emptied successfully." });
+});
+
+app.get('/', (req, res) => {
+    console.log(`Serving the main page with rainAmount = ${userInfo.rainAmount}`);
+    // Rest of your code...
+});
+
+getWeatherData(52.30, 5.62, 'precipitation_sum', 'Europe/Berlin')
+    .then(data => {
+        // Only update rainAmount if the rain barrel has not been emptied
+        if (!userInfo.rainBarrelEmptied) {
+            // Your existing code...
+        }
+    })
+    .catch(error => console.error(`Error: ${error}`));
 
 function server() {
     console.log('The server is running succesfully! at http://localhost:3000/');

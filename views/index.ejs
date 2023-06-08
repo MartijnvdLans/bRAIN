@@ -1,0 +1,47 @@
+<%- include('partials/head.ejs') -%>
+<body>
+    <%- include('partials/header.ejs') -%>
+    <main id="rainton">
+        <section>
+            <div class="outergraph">
+                <div class="innergraph" id="rain-amount"></div>
+            </div>
+            <ul>
+                <li>200 L</li>
+                <li>160 L</li>
+                <li>120 L</li>
+                <li>80 L</li>
+                <li>40 L</li>
+                <li>0 L</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Legenda</h3>
+            <ul>
+                <li>Regenton</li>
+                <li>Hoeveelheid water</li>
+                <li id="empty"><a href="/empty">Leeg Rainton</a></li>
+            </ul>
+        </section>
+        <section class="popup none" id="popup-1">
+            <h3>Let op!</h3>
+            <p>Je regenton begint vol te raken. Leeg de ton voordat er water wordt verspilt. Als je hem geleegd hebt, klik dan op de ‘Regenton Legen’ knop.</p>
+            <button>Oke</button>
+        </section>
+        <section class="popup none" id="popup-2">
+            <h3>Rainton legen!</h3>
+            <p>Je staat op het punt je Rainton te legen! Doe dit pas als de ton echt geleegd is!</p>
+            <div class="around">
+                <button>Wacht</button>
+                <button>Leeg nu!</button>
+            </div>
+        </section>
+        <section class="popup none" id="popup-3">
+            <h3>Let op!</h3>
+            <p>Je regenton is al leeg! Wacht totdat je regenton gevuld is voor je deze gaat legen!</p>
+            <button>Oke</button>
+        </section>
+    </main>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

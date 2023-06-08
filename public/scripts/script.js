@@ -13,7 +13,7 @@ crossBtn.addEventListener('click', () => {
 })
 
 if (rainTon) {
-    const emptyBtn = document.querySelector('#empty')
+    // const emptyBtn = document.querySelector('#empty')
 
     const rainAmount = document.getElementById('rain-amount')
 
@@ -33,13 +33,13 @@ if (rainTon) {
         popupVol.classList.add('none')
     })
 
-    emptyBtn.addEventListener('click', () => {
-        if (empty == true) {
-            popupLeeg.classList.remove('none')
-        } else if (empty == false) {
-            popupZeker.classList.remove('none')
-        }
-    })
+    // emptyBtn.addEventListener('click', () => {
+    //     if (empty == true) {
+    //         popupLeeg.classList.remove('none')
+    //     } else if (empty == false) {
+    //         popupZeker.classList.remove('none')
+    //     }
+    // })
 
     popupLeegBtn.addEventListener('click', () => {
         popupLeeg.classList.add('none')

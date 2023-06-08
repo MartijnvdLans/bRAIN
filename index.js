@@ -24,14 +24,26 @@ app.use(express.urlencoded({ extended: false }));
 // Routing
 
 let userInfo = {
-    "rainAmount": 180,
-    "waterDrains": 2,
-    "rainBarrels": 1,
-    "roofSurface": 20,
+    "rainAmount": null,
+    "waterDrains": null,
+    "rainBarrels": null,
+    "roofSurface": null,
 }
 
 app.get('/', (req, res) => {
-    res.render('index')
+    if (userInfo.rainBarrels == null) {
+        res.render('zero')
+    } else {
+        res.render('index')
+    }
+})
+
+app.get('/firstInfo', (req, res) => {
+    // console.log(req.query.Dakoppervlak)
+    userInfo.roofSurface = req.query.boardingDak
+    userInfo.rainBarrels = req.query.boardingPijpen
+    userInfo.waterDrains = req.query.boardingTonnen
+    res.redirect('/')
 })
 
 app.get('/empty', (req, res) => {

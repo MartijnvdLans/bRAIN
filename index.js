@@ -36,7 +36,7 @@ function testRainCollection() {
     if (!userInfo.rainBarrelEmptied) {
     let fakeData = {
       daily: {
-        precipitation_sum: [ 4.00, 3.00] // Adjust these values for different tests
+        precipitation_sum: [ 2.00, 2.00] // Adjust these values for different tests
       }
     };
   

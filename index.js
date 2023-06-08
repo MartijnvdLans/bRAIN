@@ -40,13 +40,11 @@ function testRainCollection() {
       }
     };
   
-    
     let totalRain = 0;
     fakeData.daily.precipitation_sum.forEach((precipitation) => {
       totalRain += precipitation;
     });
     
-   
     userInfo.roofSurface = 32; 
     userInfo.rainAmount = (totalRain * userInfo.roofSurface).toFixed(1);
     if (userInfo.rainAmount > 200) {
@@ -132,6 +130,23 @@ getWeatherData(52.30, 5.62, 'precipitation_sum', 'Europe/Berlin')
         }
     })
     .catch(error => console.error(`Error: ${error}`));
+
+    getWeatherData(52.30, 5.62, 'precipitation_sum', 'Europe/Berlin')
+    .then(data => {
+        if (!userInfo.rainBarrelEmptied) {
+            // Your existing code...
+       
+        let totalRain = 0;
+        data.daily.precipitation_sum.forEach((precipitation) => {
+            totalRain += precipitation;
+        });
+        userInfo.rainAmount = parseFloat((totalRain * userInfo.roofSurface).toFixed(1));
+      
+        console.log(`Total rain collected: ${userInfo.rainAmount}`);
+    }
+    })
+    .catch(error => console.error(`Error: ${error}`));
+
 
 function server() {
     console.log('The server is running succesfully! at http://localhost:3000/');

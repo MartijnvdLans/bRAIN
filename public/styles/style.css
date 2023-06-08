@@ -134,6 +134,14 @@ main {
     margin-top: 1em;
 }
 
+#rainton section:nth-child(2) button {
+    background-color: #ba131a;
+    border:none;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 1em;
+}
+
 #rainton section:first-child ul {
     display: flex;
     flex-direction: column;

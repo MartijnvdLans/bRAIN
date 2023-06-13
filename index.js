@@ -6,7 +6,7 @@ import bodyParser from 'body-parser';
 import { getWeatherData } from './functions/weatherAPI.js';
 
 const app = express();
-const port = 3000;
+const port = 4500;
 app.use(bodyParser.urlencoded({extended : true}))
 
 const __filename = fileURLToPath(import.meta.url);
@@ -117,24 +117,9 @@ app.post('/empty', (req, res) => {
     res.status(200).json({ message: "Rain barrel emptied successfully." });
 });
 
-app.get('/', (req, res) => {
-    console.log(`Serving the main page with rainAmount = ${userInfo.rainAmount}`);
-    // Rest of your code...
-});
-
-getWeatherData(52.30, 5.62, 'precipitation_sum', 'Europe/Berlin')
-    .then(data => {
-        // Only update rainAmount if the rain barrel has not been emptied
-        if (!userInfo.rainBarrelEmptied) {
-            // Your existing code...
-        }
-    })
-    .catch(error => console.error(`Error: ${error}`));
-
     getWeatherData(52.30, 5.62, 'precipitation_sum', 'Europe/Berlin')
     .then(data => {
         if (!userInfo.rainBarrelEmptied) {
-            // Your existing code...
        
         let totalRain = 0;
         data.daily.precipitation_sum.forEach((precipitation) => {

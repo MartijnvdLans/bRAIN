@@ -33,13 +33,7 @@ if (rainTon) {
         popupVol.classList.add('none')
     })
 
-    // emptyBtn.addEventListener('click', () => {
-    //     if (empty == true) {
-    //         popupLeeg.classList.remove('none')
-    //     } else if (empty == false) {
-    //         popupZeker.classList.remove('none')
-    //     }
-    // })
+  
 
     popupLeegBtn.addEventListener('click', () => {
         popupLeeg.classList.add('none')
@@ -76,9 +70,6 @@ confirmEmptyButton.addEventListener('click', () => {
     .then(response => response.json())
     .then(data => {
         console.log(data.message);
-        // Here you could update the rain amount in your HTML:
-        // document.querySelector('#rain-amount').textContent = '0';
-        // Or reload the page if you prefer:
         window.location.reload();
     });
 });

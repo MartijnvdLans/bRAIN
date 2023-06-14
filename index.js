@@ -45,7 +45,7 @@ function testRainCollection() {
       totalRain += precipitation;
     });
     
-    userInfo.roofSurface = 32; 
+    userInfo.roofSurface = 34; 
     userInfo.rainAmount = (totalRain * userInfo.roofSurface).toFixed(1);
     if (userInfo.rainAmount > 200) {
         userInfo.rainAmount = 200;
@@ -117,20 +117,34 @@ app.post('/empty', (req, res) => {
     res.status(200).json({ message: "Rain barrel emptied successfully." });
 });
 
-    getWeatherData(52.30, 5.62, 'precipitation_sum', 'Europe/Berlin')
+
+setInterval(() => {
+getWeatherData(52.52, 13.41, 'precipitation_sum', 'Europe/Berlin')
     .then(data => {
         if (!userInfo.rainBarrelEmptied) {
-       
-        let totalRain = 0;
-        data.daily.precipitation_sum.forEach((precipitation) => {
-            totalRain += precipitation;
-        });
-        userInfo.rainAmount = parseFloat((totalRain * userInfo.roofSurface).toFixed(1));
-      
-        console.log(`Total rain collected: ${userInfo.rainAmount}`);
-    }
+            let totalRain = 0;
+            let nextRainDay = '';
+            let nextRainAmount = 0;
+            data.daily.precipitation_sum.forEach((precipitation, index) => {
+                totalRain += precipitation;
+                if (precipitation > 0 && nextRainDay === '') {
+                    nextRainDay = data.daily.time[index];
+                    nextRainAmount = precipitation;
+                }
+            });
+
+            userInfo.rainAmount = parseFloat((totalRain * userInfo.roofSurface).toFixed(1));
+            userInfo.nextRainDay = nextRainDay ? nextRainDay : 'No rain expected in the next 7 days';
+            userInfo.nextRainAmount = nextRainAmount; // Store the next rain amount
+
+            console.log(data)
+            console.log(`Total rain collected: ${userInfo.rainAmount}`);
+            console.log(`Next day of rain: ${userInfo.nextRainDay}`);
+            console.log(`Amount of rain on next rainy day: ${userInfo.nextRainAmount}`);
+        }
     })
     .catch(error => console.error(`Error: ${error}`));
+}, 1000 * 60 * 60);
 
 
 function server() {

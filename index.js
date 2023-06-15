@@ -46,7 +46,7 @@ function testRainCollection() {
     });
     
     userInfo.roofSurface = 34; 
-    userInfo.rainAmount = (totalRain * userInfo.roofSurface).toFixed(1);
+    userInfo.rainAmount = Math.round(totalRain * userInfo.roofSurface);;
     if (userInfo.rainAmount > 200) {
         userInfo.rainAmount = 200;
     }
@@ -58,17 +58,21 @@ function testRainCollection() {
   testRainCollection();
 
   app.get('/', (req, res) => {
+    let options = { day: 'numeric', month: 'long', year: 'numeric' };
+    let currentDate = new Date().toLocaleDateString('nl-NL', options);
     console.log(`Rendering index page with rain amount: ${userInfo.rainAmount}`);
     if (userInfo.rainBarrels == null) {
-        res.render('zero')
+        res.render('zero', { currentDate: currentDate })
     } else {
-        res.render('index', { userInfo: userInfo })
+        res.render('index', { userInfo: userInfo, currentDate: currentDate })
     }
 });
 
 app.get('/test', (req, res) => {
+    let options = { day: 'numeric', month: 'long', year: 'numeric' };
+    let currentDate = new Date().toLocaleDateString('nl-NL', options);
     testRainCollection(); 
-    res.render('index', { userInfo: userInfo });
+    res.render('index', { userInfo: userInfo, currentDate: currentDate });
 });
 
 app.get('/firstInfo', (req, res) => {
@@ -133,6 +137,8 @@ getWeatherData(52.52, 13.41, 'precipitation_sum', 'Europe/Berlin')
                 }
             });
 
+
+            
             userInfo.rainAmount = parseFloat((totalRain * userInfo.roofSurface).toFixed(1));
             userInfo.nextRainDay = nextRainDay ? nextRainDay : 'No rain expected in the next 7 days';
             userInfo.nextRainAmount = nextRainAmount; // Store the next rain amount

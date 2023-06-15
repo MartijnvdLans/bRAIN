@@ -1,17 +1,5 @@
 const rainTon = document.querySelector('#rainton')
 
-const hamburgerBtn = document.querySelector('#hamburger')
-const crossBtn = document.querySelector('#cross')
-const nav = document.querySelector('nav')
-
-hamburgerBtn.addEventListener('click', () => {
-    nav.classList.remove('hidden')
-})
-
-crossBtn.addEventListener('click', () => {
-    nav.classList.add('hidden')
-})
-
 if (rainTon) {
     // const emptyBtn = document.querySelector('#empty')
 

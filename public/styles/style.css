@@ -62,7 +62,7 @@ nav {
 
 nav svg {
     height: 30px;
-    stroke: var(--inactive-blue);
+    stroke: var(--light-blue);
 }
 
 nav ul {
@@ -81,25 +81,25 @@ nav ul li {
 }
 
 nav ul li:hover svg {
-    stroke: var(--active-blue);
+    stroke: var(--dark-blue);
 }
 
 nav ul li a {
-    color: var(--inactive-blue);
+    color: var(--light-blue);
     text-decoration: none;
     margin-top: .5em;
 }
 
 nav ul li:hover a {
-    color: var(--active-blue);
+    color: var(--dark-blue);
 }
 
 .active a {
-    color: var(--active-blue);
+    color: var(--dark-blue);
 }
 
 .active svg {
-    stroke: var(--active-blue);
+    stroke: var(--dark-blue);
 }
 
 /* MAIN */

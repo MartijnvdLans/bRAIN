@@ -86,37 +86,6 @@ nav ul li:hover a {
     stroke: var(--active-blue);
 }
 
-/* nav form {
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-} */
-
-/* nav form p {
-    padding-bottom: 1em;
-} */
-
-/* nav form input {
-    padding: 1em;
-    margin: .5em 0;
-    text-align: center;
-    border-radius: 10px;
-    border: 1px solid #fff;
-    background-color: #000;
-} */
-
-/* nav form button {
-    padding: 1em;
-    background-color: #fff;
-    border: none;
-    border-radius: 10px;
-    margin: .5em 0; */
-/* } */
-
-/* nav form a {
-    color: #fff;
-} */
-
 /* MAIN */
 
 main {

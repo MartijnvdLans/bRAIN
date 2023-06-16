@@ -450,12 +450,9 @@ fieldset h1 {
     text-align: center;
 }
 
-fieldset img {
-    width: 100vw;
-}
-
 fieldset .volgende-button {
     background-color: var(#3498DB);
+}
 
 fieldset h2 {
     color: var(--dark-blue);
@@ -481,7 +478,6 @@ fieldset p {
 
 fieldset img {
     padding-top: 4em;
-    background-color: #3498DB;
     width: 100%;
 }
 

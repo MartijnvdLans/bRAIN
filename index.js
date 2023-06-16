@@ -58,13 +58,14 @@ function testRainCollection() {
   testRainCollection();
 
   app.get('/', (req, res) => {
+    const currentPage = 'home'
     let options = { day: 'numeric', month: 'long', year: 'numeric' };
     let currentDate = new Date().toLocaleDateString('nl-NL', options);
     console.log(`Rendering index page with rain amount: ${userInfo.rainAmount}`);
     if (userInfo.rainBarrels == null) {
         res.render('zero', { currentDate: currentDate })
     } else {
-        res.render('index', { userInfo: userInfo, currentDate: currentDate })
+        res.render('index', { userInfo: userInfo, currentDate: currentDate, currentPage })
     }
 });
 
@@ -95,11 +96,13 @@ app.get('/empty', (req, res) => {
 })
 
 app.get('/settings', (req, res) => {
-    res.render('settings', { userInfo: userInfo })
+    const currentPage = 'settings'
+    res.render('settings', { userInfo: userInfo, currentPage })
 })
 
 app.get('/saved', (req, res) => {
-    res.render('saved', { userInfo: userInfo })
+    const currentPage = 'settings'
+    res.render('saved', { userInfo: userInfo, currentPage })
 })
 
 app.get('/edit', (req, res) => {

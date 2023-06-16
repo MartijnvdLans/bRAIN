@@ -272,11 +272,27 @@ nav ul li:hover a {
     animation-delay: 3s;
 }
 
+
+/* gegevens */
+
+h2 {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 29px;
+    color: #3E4F66;
+    font-family: 'Bree Serif', serif;
+}
+
+.settings_visual_button {
+    display: flex;
+    justify-content: center;
+}
+
 .settings {
     display: flex;
     width: 100%;
     flex-direction: column;
-    align-items: stretch;
+    align-items: stretch; 
 }
 
 .formLabel {
@@ -285,12 +301,16 @@ nav ul li:hover a {
     margin: 1em .5em;
     align-items: stretch;
     position: relative;
+    font-family: 'Bree Serif', serif;
+    color: #3E4F66;
+    text-align: center;
 }
+
 
 .formLabel span {
     position: absolute;
-    bottom: 31px;
-    left: 55px;
+    bottom: 30px;
+    left: 90px;
     font-weight: bold;
 }
 
@@ -312,24 +332,24 @@ nav ul li:hover a {
     border: none;
     padding: 1em;
     font-size: 20px;
-    background-color: #e9e9e9;
+    background-color: #EDEDED;
     margin: .5em 0;
-    width: 100%;
+    width: 80%;
     font-weight: bold;
+    color: #3E4F66;
+    border-radius: .5rem;
 }
 
 
 .settings button {
-    padding: 1em;
-    outline: none;
-    border: none;
-    color: #fff;
-    font-size: 20px;
-    border-radius: 10px;
-    background-color: #3498DB;
-    width: calc(100% - 2em);
-    position: absolute;
-    bottom: 1em;
+    padding: .7em 1em;
+    background: linear-gradient( #4ECD5D, #48BE56);
+    border:none;
+    color: white;
+    font-family: 'Bree Serif', serif;
+    font-size: 22px;
+    border-radius: 3em;
+    width: 50%;
 }
 
 .popup { 
@@ -439,4 +459,6 @@ fieldset .progress .stap:nth-child(1) {
     width: 1.4em;
     height: 1.4em;
 }
+
+
 

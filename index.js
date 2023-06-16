@@ -36,7 +36,7 @@ function testRainCollection() {
     if (!userInfo.rainBarrelEmptied) {
     let fakeData = {
       daily: {
-        precipitation_sum: [ 2.00, 2.00] // Adjust these values for different tests
+        precipitation_sum: [ 5.00, 2.00] // Adjust these values for different tests
       }
     };
   
@@ -47,8 +47,8 @@ function testRainCollection() {
     
     userInfo.roofSurface = 34; 
     userInfo.rainAmount = Math.round(totalRain * userInfo.roofSurface);;
-    if (userInfo.rainAmount > 200) {
-        userInfo.rainAmount = 200;
+    if (userInfo.rainAmount > 400) {
+        userInfo.rainAmount = 400;
     }
     console.log(`Total rain collected: ${userInfo.rainAmount}`);
 }
@@ -70,10 +70,15 @@ function testRainCollection() {
 });
 
 app.get('/test', (req, res) => {
+    const currentPage = 'home'
     let options = { day: 'numeric', month: 'long', year: 'numeric' };
     let currentDate = new Date().toLocaleDateString('nl-NL', options);
-    testRainCollection(); 
-    res.render('index', { userInfo: userInfo, currentDate: currentDate });
+    console.log(`Rendering index page with rain amount: ${userInfo.rainAmount}`);
+    if (userInfo.rainBarrels == null) {
+        res.render('zero', { currentDate: currentDate })
+    } else {
+        res.render('index', { userInfo: userInfo, currentDate: currentDate, currentPage })
+    }
 });
 
 app.get('/firstInfo', (req, res) => {

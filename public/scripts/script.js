@@ -1,21 +1,9 @@
 const rainTon = document.querySelector('#rainton')
 
-const hamburgerBtn = document.querySelector('#hamburger')
-const crossBtn = document.querySelector('#cross')
-const nav = document.querySelector('nav')
-
-hamburgerBtn.addEventListener('click', () => {
-    nav.classList.remove('hidden')
-})
-
-crossBtn.addEventListener('click', () => {
-    nav.classList.add('hidden')
-})
-
 if (rainTon) {
     // const emptyBtn = document.querySelector('#empty')
 
-    const rainAmount = document.getElementById('rain-amount')
+    const rainAmount2 = document.getElementById('rain-amount')
 
     const popupVol = document.querySelector('#popup-1')
     const popupVolBtn = document.querySelector('#popup-1 button')
@@ -33,20 +21,14 @@ if (rainTon) {
         popupVol.classList.add('none')
     })
 
-    // emptyBtn.addEventListener('click', () => {
-    //     if (empty == true) {
-    //         popupLeeg.classList.remove('none')
-    //     } else if (empty == false) {
-    //         popupZeker.classList.remove('none')
-    //     }
-    // })
+  
 
     popupLeegBtn.addEventListener('click', () => {
         popupLeeg.classList.add('none')
     })
 
     popupZekerBtn.addEventListener('click', () => {
-        rainAmount.style.height = "0px"
+        rainAmount2.style.height = "0px"
         popupZeker.classList.add('none')
         empty = true
 
@@ -56,3 +38,31 @@ if (rainTon) {
         popupZeker.classList.add('none')
     })
 }
+
+const emptyButton = document.querySelector('#empty button');
+const confirmEmptyButton = document.querySelector('#popup-2 .around button:last-child');
+const cancelButton = document.querySelector('#popup-2 .around button:first-child');
+const popup = document.querySelector('#popup-2');
+
+// When the empty button is clicked, show the popup
+emptyButton.addEventListener('click', (e) => {
+    console.log('Empty button clicked');
+    e.preventDefault();
+    popup.classList.remove('none');
+});
+
+confirmEmptyButton.addEventListener('click', () => {
+    fetch('/empty', {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        window.location.reload();
+    });
+});
+
+cancelButton.addEventListener('click', () => {
+    console.log('Cancel button clicked');
+    popup.classList.add('none');
+});

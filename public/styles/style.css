@@ -1,8 +1,3 @@
-:root {
-    --inactive-blue: #7FAEC5;
-    --active-blue: #3E4F66;
-}
-
 *, html {
     padding: 0;
     margin: 0;
@@ -10,10 +5,30 @@
     overflow-x: hidden;
 }
 
+:root {
+    /* Colors */
+    --dark-blue: #3E4F66;
+    --light-blue: #7FAEC5;
+    --turq: #6DC2C9;
+    --darker-green: #399e44;
+    --green: #4ECD5D;
+    --white: #FFFFFF;
+
+    /* Fonts */
+    --bree: font-family: 'Bree Serif', serif;
+    --open-sans: font-family: 'Open Sans', sans-serif;
+
+    /* Fonts */
+    --bree: font-family: 'Bree Serif', serif;
+    --open-sans: font-family: 'Open Sans', sans-serif;
+}
+
+
+
 body {
     font-family: 'Inter', sans-serif;
     position: relative;
-    width: 100vw;
+    width: 90vw;
     min-height: 100vh;
 }
 
@@ -414,6 +429,8 @@ ul {
     }
 }
 
+
+
 fieldset {
     position: relative;
     border: none;
@@ -426,14 +443,74 @@ fieldset .text-button-progress {
 }
 
 fieldset h1 {
+    color: var(--dark-blue);
+    font-family: 'Bree Serif', serif;
     font-size: 48px;
+    font-weight: 400;
     text-align: center;
 }
 
+fieldset img {
+    width: 100vw;
+}
+
 fieldset .volgende-button {
+    background-color: var(#3498DB);
+
+fieldset h2 {
+    color: var(--dark-blue);
+    font-family: 'Bree Serif', serif;
+    font-size: 2em;
+    font-weight: 400;
+    padding-bottom: 0.2em;
+}
+
+fieldset label {
+    color: var(--dark-blue);
+    font-family: var(--open-sans);
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+fieldset p {
+    color: var(--dark-blue);
+    font-family: var(--open-sans);
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+fieldset img {
+    padding-top: 4em;
     background-color: #3498DB;
     width: 100%;
-    height: 4em;
+}
+
+fieldset .buttons {
+    padding: 1em 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.5em;
+}
+
+fieldset .terug-button {
+    color: var(--green);
+    font-family: var(--bree);
+    font-size: 1.2em;
+    background-color: linear-gradient(var(--darker-green), var(--green));
+    border: solid 2px var(--green);
+    border-radius: 20em;
+    width: 100%;
+    height: 3em;
+}
+
+fieldset .volgende-button {
+    color: var(--white);
+    font-family: var(--bree);
+    font-size: 1.2em;
+    background-color: linear-gradient(#36A734, #4ECD5D);
+    border-radius: 20em;
+    width: 100%;
+    height: 3em;
     border: none;
 }
 
@@ -441,7 +518,7 @@ fieldset .progress {
     display: grid;
     place-items: center;
     grid-template-columns: repeat(5, 1fr);
-    width: 80vw;
+    width: 60vw;
     height: 4em;
     margin: auto;
 }
@@ -449,16 +526,13 @@ fieldset .progress {
 fieldset .progress .stap {
     display: flex;
     background-color: lightgray;
-    width: 1em;
-    height: 1em;
+    width: 0.6em;
+    height: 0.6em;
     border-radius: 100em;
 }
 
 fieldset .progress .stap:nth-child(1) {
     background-color: #36A734;
-    width: 1.4em;
-    height: 1.4em;
+    width: 1.2em;
+    height: 1.2em;
 }
-
-
-

@@ -456,6 +456,7 @@ fieldset img {
 
 fieldset .volgende-button {
     background-color: var(#3498DB);
+}
 
 fieldset h2 {
     color: var(--dark-blue);

@@ -537,3 +537,29 @@ fieldset .progress .stap:nth-child(1) {
     width: 1.2em;
     height: 1.2em;
 }
+
+
+/* Statistieken pagina */
+.stats_visual_section {
+    background-color:#EDEDED ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.stats_visual_section h3 {
+    font-size: 20px;
+    font-family: 'Bree Serif', serif;
+    color: #3E4F66;
+    padding-bottom: 1rem;
+    font-weight: 300;
+}
+
+.stats_visual_section p {
+    color: #3E4F66;
+    font-size: 32px;
+    font-family: var(--open-sans);
+}

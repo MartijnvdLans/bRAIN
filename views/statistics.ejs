@@ -1,10 +1,18 @@
 <%- include('partials/head.ejs') -%>
 <body>
-    <main class="savedMain">
-        <section>
-            <%- include('partials/settingForm.ejs') -%>
-        </section>
-    </main>
+    <h2>Statistieken</h2>
+   <section class="stats_visual_section">
+        <h3>Eerst volgende regenval</h3>
+        <p><%= userInfo.nextRainDay %></p>
+   </section>
+   <section class="stats_visual_section">
+    <h3>Geschatte dag wanneer de regenton weer vol raakt</h3>
+    <p><%= userInfo.fullRainBarrelDay %></p>
+   </section>
+   <section class="stats_visual_section">
+    <h3>Hoeveelheid water bespaard</h3>
+    <p>N/A</p>
+   </section>
     <script src="scripts/script.js"></script>
 </body>
 <%- include('partials/footer.ejs') -%>

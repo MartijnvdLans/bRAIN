@@ -4,6 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
 import { getWeatherData } from './functions/weatherAPI.js';
+import { UserInfo } from './functions/db.js';
 
 const app = express();
 const port = 4500;
@@ -82,23 +83,31 @@ app.get('/test', (req, res) => {
 });
 
 app.get('/firstInfo', (req, res) => {
-    // console.log(req.query.Dakoppervlak)
-    userInfo.roofSurface = req.query.boardingDak
-    userInfo.rainBarrels = req.query.boardingPijpen
-    userInfo.waterDrains = req.query.boardingTonnen
-    res.redirect('/')
-})
+    // create a new UserInfo document
+    const userInfo = new UserInfo({
+        roofSurface: req.query.boardingDak,
+        rainBarrels: req.query.boardingPijpen,
+        waterDrains: req.query.boardingTonnen,
+        rainAmount: 0,  // initialize other values as needed
+        rainBarrelEmptied: false,
+    });
 
-app.get('/empty', (req, res) => {
-    console.log(userInfo.rainAmount)
-    if (userInfo.rainAmount > 1) {
-        userInfo.rainAmount = 0
-        console.log(userInfo.rainAmount)
-        res.render('empty')
-    } else {
-        res.render('emptyError')
-    }
-})
+    // save the document to the database
+    userInfo.save()
+        .then(doc => {
+            return res.redirect('/');
+        })
+        .catch(err => {
+            return res.status(500).send(err);
+        });
+});
+
+app.get('/getUserInfo', (req, res) => {
+    UserInfo.find({}, (err, userInfos) => {  // Find all UserInfo documents
+        if (err) return res.status(500).send(err);
+        return res.status(200).send(userInfos);  // Send the found documents back to the client
+    });
+});
 
 app.get('/settings', (req, res) => {
     const currentPage = 'settings'

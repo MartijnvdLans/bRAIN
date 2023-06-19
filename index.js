@@ -8,6 +8,7 @@ import { UserInfo } from './functions/db.js';
 
 const app = express();
 const port = 4500;
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({extended : true}))
 
 const __filename = fileURLToPath(import.meta.url);
@@ -33,66 +34,41 @@ let userInfo = {
     "rainBarrelEmptied": false,
 }
 
-function testRainCollection() {
-    if (!userInfo.rainBarrelEmptied) {
-    let fakeData = {
-      daily: {
-        precipitation_sum: [ 5.00, 2.00] // Adjust these values for different tests
-      }
-    };
-  
-    let totalRain = 0;
-    fakeData.daily.precipitation_sum.forEach((precipitation) => {
-      totalRain += precipitation;
-    });
-    
-    userInfo.roofSurface = 34; 
-    userInfo.rainAmount = Math.round(totalRain * userInfo.roofSurface);;
-    if (userInfo.rainAmount > 400) {
-        userInfo.rainAmount = 400;
-    }
-    console.log(`Total rain collected: ${userInfo.rainAmount}`);
-}
-  }
-  
-  // Run the test
-  testRainCollection();
-
-  app.get('/', (req, res) => {
+  app.get('/', async (req, res) => {
     const currentPage = 'home'
     let options = { day: 'numeric', month: 'long', year: 'numeric' };
     let currentDate = new Date().toLocaleDateString('nl-NL', options);
-    console.log(`Rendering index page with rain amount: ${userInfo.rainAmount}`);
-    if (userInfo.rainBarrels == null) {
-        res.render('zero', { currentDate: currentDate })
-    } else {
-        res.render('index', { userInfo: userInfo, currentDate: currentDate, currentPage })
+
+    try {
+        // Get the most recent UserInfo from the database
+        const userInfo = await UserInfo.findOne().sort('-_id').exec();
+        
+        if (userInfo) { // check if userInfo is not null
+            console.log(`Rendering index page with rain amount: ${userInfo.rainAmount}`);
+            if (userInfo.rainBarrels == null) {
+                res.render('zero', { currentDate: currentDate })
+            } else {
+                res.render('index', { userInfo: userInfo, currentDate: currentDate, currentPage })
+            }
+        } else { // in case userInfo is null
+            res.render('zero', { currentDate: currentDate }) 
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
     }
 });
 
-app.get('/test', (req, res) => {
-    const currentPage = 'home'
-    let options = { day: 'numeric', month: 'long', year: 'numeric' };
-    let currentDate = new Date().toLocaleDateString('nl-NL', options);
-    console.log(`Rendering index page with rain amount: ${userInfo.rainAmount}`);
-    if (userInfo.rainBarrels == null) {
-        res.render('zero', { currentDate: currentDate })
-    } else {
-        res.render('index', { userInfo: userInfo, currentDate: currentDate, currentPage })
-    }
-});
-
-app.get('/firstInfo', (req, res) => {
-    // create a new UserInfo document
+app.post('/firstInfo', (req, res) => {
+    console.log('firstInfo doet het')
     const userInfo = new UserInfo({
-        roofSurface: req.query.boardingDak,
-        rainBarrels: req.query.boardingPijpen,
-        waterDrains: req.query.boardingTonnen,
-        rainAmount: 0,  // initialize other values as needed
+        roofSurface: req.body.boardingDak,
+        rainBarrels: req.body.boardingPijpen,
+        waterDrains: req.body.boardingTonnen,
+        rainAmount: 0, 
         rainBarrelEmptied: false,
     });
 
-    // save the document to the database
     userInfo.save()
         .then(doc => {
             return res.redirect('/');
@@ -109,10 +85,16 @@ app.get('/getUserInfo', (req, res) => {
     });
 });
 
-app.get('/settings', (req, res) => {
-    const currentPage = 'settings'
-    res.render('settings', { userInfo: userInfo, currentPage })
-})
+app.get('/settings', async (req, res) => {
+    const currentPage = 'settings';
+    try {
+        const userInfo = await UserInfo.findOne().sort('-_id').exec();
+        res.render('settings', { userInfo: userInfo, currentPage });
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+});
 
 app.get('/statistics', (req, res) => {
     const currentPage = 'statistics'
@@ -124,13 +106,34 @@ app.get('/saved', (req, res) => {
     res.render('saved', { userInfo: userInfo, currentPage })
 })
 
-app.get('/edit', (req, res) => {
-    // console.log(req.query.Dakoppervlak)
-    userInfo.roofSurface = req.query.Dakoppervlak
-    userInfo.rainBarrels = req.query.Regenpijpen
-    userInfo.waterDrains = req.query.Regentonnen
-    res.redirect('/saved')
-})
+app.post('/edit', async (req, res) => {
+    const currentPage = 'settings';
+    try {
+        const updatedUserInfo = await UserInfo.findOneAndUpdate(
+            {}, 
+            {
+                roofSurface: req.body.Dakoppervlak,
+                waterDrains: req.body.Regenpijpen,
+                rainBarrels: req.body.Regentonnen
+            },
+            {
+                new: true, // This option asks mongoose to return the updated userInfo
+                useFindAndModify: false // To deal with MongoDB deprecation warning
+            }
+        );
+
+        if (!updatedUserInfo) {
+            return res.status(404).send();
+        }
+
+        // Render the settings page with the updated user info
+        return res.render('settings', { userInfo: updatedUserInfo, currentPage });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send(error);
+    }
+});
 
 app.get('/offline', (req, res) => {
     res.render('offline')
@@ -143,7 +146,16 @@ app.post('/empty', (req, res) => {
     res.status(200).json({ message: "Rain barrel emptied successfully." });
 });
 
-
+// /reset reset alle data.
+app.get('/reset', async (req, res) => {
+    try {
+        await UserInfo.deleteMany({});
+        res.send("All user data has been deleted.");
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+});
 
 getWeatherData(52.52, 13.41, 'precipitation_sum', 'Europe/Berlin')
     .then(data => {

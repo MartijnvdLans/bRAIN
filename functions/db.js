@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 
-// Connect to MongoDB
+// Connectie MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
@@ -11,7 +11,7 @@ db.once('open', function() {
   console.log("Connected to the database!");
 });
 
-// Define a schema
+// schema definiëren
 const UserInfoSchema = new mongoose.Schema({
   rainAmount: Number,
   waterDrains: Number,

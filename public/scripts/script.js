@@ -91,7 +91,7 @@ const fieldsetStap3 = getElementById('fieldset-stap3');
 const fieldsetStap4 = getElementById('fieldset-stap4');
 const fieldsetStap5 = getElementById('fieldset-stap5');
 
-fieldset1VolgendeKnop.addEventListener('click', function() {
+fieldset1VolgendeKnop.addEventListener('click', function(event) {
     event.preventDefault();
 
     fieldset1.style.display = "none";
@@ -105,7 +105,7 @@ fieldset1VolgendeKnop.addEventListener('click', function() {
     fieldsetStap2.style.backgroundColor = "#36A734";
 });
 
-fieldset2TerugKnop.addEventListener('click', function() {
+fieldset2TerugKnop.addEventListener('click', function(event) {
     event.preventDefault();
 
     fieldset1.style.display = "block";
@@ -119,7 +119,7 @@ fieldset2TerugKnop.addEventListener('click', function() {
     fieldsetStap1.style.backgroundColor = "#36A734";
 });
 
-fieldset2VolgendeKnop.addEventListener('click', function() {
+fieldset2VolgendeKnop.addEventListener('click', function(event) {
     event.preventDefault();
 
     fieldset2.style.display = "none";
@@ -133,7 +133,7 @@ fieldset2VolgendeKnop.addEventListener('click', function() {
     fieldsetStap3.style.backgroundColor = "#36A734";
 });
 
-fieldset3TerugKnop.addEventListener('click', function() {
+fieldset3TerugKnop.addEventListener('click', function(event) {
     event.preventDefault();
 
     fieldset2.style.display = "block";
@@ -147,7 +147,7 @@ fieldset3TerugKnop.addEventListener('click', function() {
     fieldsetStap2.style.backgroundColor = "#36A734";
 });
 
-fieldset3VolgendeKnop.addEventListener('click', function() {
+fieldset3VolgendeKnop.addEventListener('click', function(event) {
     event.preventDefault();
 
     fieldset3.style.display = "none";
@@ -161,7 +161,7 @@ fieldset3VolgendeKnop.addEventListener('click', function() {
     fieldsetStap4.style.backgroundColor = "#36A734";
 });
 
-fieldset4TerugKnop.addEventListener('click', function() {
+fieldset4TerugKnop.addEventListener('click', function(event) {
     event.preventDefault();
 
     fieldset3.style.display = "block";
@@ -175,7 +175,7 @@ fieldset4TerugKnop.addEventListener('click', function() {
     fieldsetStap3.style.backgroundColor = "#36A734";
 });
 
-fieldset4VolgendeKnop.addEventListener('click', function() {
+fieldset4VolgendeKnop.addEventListener('click', function(event) {
     event.preventDefault();
 
     fieldset4.style.display = "none";
@@ -189,7 +189,7 @@ fieldset4VolgendeKnop.addEventListener('click', function() {
     fieldsetStap5.style.backgroundColor = "#36A734";
 });
 
-fieldset5TerugKnop.addEventListener('click', function() {
+fieldset5TerugKnop.addEventListener('click', function(event) {
     event.preventDefault();
 
     fieldset4.style.display = "block";

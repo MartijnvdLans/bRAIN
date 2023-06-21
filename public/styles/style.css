@@ -571,5 +571,14 @@ label[for=boardingDak] {
     display: block;
 }
 #fieldset2, #fieldset3, #fieldset4, #fieldset5 {
-    display: none;
+    display: block;
+}
+
+
+
+/* Regen */
+
+.rain-animatie .rain {
+    height: 1em;
+    width: 0.2em;
 }

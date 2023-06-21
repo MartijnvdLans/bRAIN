@@ -202,3 +202,6 @@ fieldset5TerugKnop.addEventListener('click', function(event) {
     fieldsetStap4.style.height = "1.2em";
     fieldsetStap4.style.backgroundColor = "#36A734";
 });
+
+
+

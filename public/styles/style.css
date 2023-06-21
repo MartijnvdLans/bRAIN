@@ -581,4 +581,5 @@ label[for=boardingDak] {
 .rain-animatie .rain {
     height: 1em;
     width: 0.2em;
+    background-color: var(--light-blue);
 }

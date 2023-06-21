@@ -63,7 +63,7 @@ function testRainCollection() {
     let currentDate = new Date().toLocaleDateString('nl-NL', options);
     console.log(`Rendering index page with rain amount: ${userInfo.rainAmount}`);
     if (userInfo.rainBarrels == null) {
-        res.render('index', { currentDate: currentDate })
+        res.render('zero', { currentDate: currentDate })
     } else {
         res.render('index', { userInfo: userInfo, currentDate: currentDate, currentPage })
     }

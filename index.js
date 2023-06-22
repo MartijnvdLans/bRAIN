@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
 import { getWeatherData } from './functions/weatherAPI.js';
 import { UserInfo } from './functions/db.js';
+import cron from 'node-cron';
 
 const app = express();
 const port = 4600;
@@ -96,10 +97,21 @@ app.get('/settings', async (req, res) => {
     }
 });
 
-app.get('/statistics', (req, res) => {
-    const currentPage = 'statistics'
-    res.render('statistics', { userInfo: userInfo, currentPage })
-})
+app.get('/statistics', async (req, res) => {
+    const currentPage = 'statistics';
+    try {
+        const userInfo = await UserInfo.findOne().sort('-_id').exec();
+        res.render('statistics', { 
+            userInfo: userInfo, 
+            currentPage, 
+            nextRainDay: userInfo.nextRainDay,
+            fullRainBarrelDay: userInfo.fullRainBarrelDay
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+});
 
 app.get('/saved', (req, res) => {
     const currentPage = 'settings'
@@ -157,44 +169,58 @@ app.get('/reset', async (req, res) => {
     }
 });
 
-getWeatherData(52.52, 13.41, 'precipitation_sum', 'Europe/Berlin')
-    .then(data => {
-        if (!userInfo.rainBarrelEmptied) {
-            let totalRain = userInfo.rainAmount || 0; // Start with the current amount of rain in the barrel
-            let fullRainBarrelDay = '';
-            let nextRainDay = '';
-            let nextRainAmount = 0;
-            data.daily.precipitation_sum.some((precipitation, index) => {
-                totalRain += (precipitation * userInfo.roofSurface);
-                if (totalRain > 400) { // Assuming 400 is the capacity of the barrel
-                    fullRainBarrelDay = data.daily.time[index];
-                    return true; // Stop the iteration when the barrel is full
-                }
-                if (precipitation > 0 && nextRainDay === '') {
-                    nextRainDay = data.daily.time[index];
-                    nextRainAmount = precipitation;
-                }
-                return false;
-            });
-            
-            userInfo.rainAmount = parseFloat((totalRain > 400 ? 400 : totalRain).toFixed(1)); // rainAmount niet boven de 400.
-            userInfo.fullRainBarrelDay = fullRainBarrelDay ? fullRainBarrelDay : 'Geen volle ton in de komende 7 dagen.';
-            userInfo.nextRainDay = nextRainDay ? nextRainDay : 'Geen regen verwacht komende 7 dagen';
-            userInfo.nextRainAmount = nextRainAmount;
+async function updateWeatherData() {
+    try {
+        const userInfo = await UserInfo.findOne().sort('-_id').exec();
+        const data = await getWeatherData(52.37, 4.89, 'precipitation_sum', 'Europe/Berlin');
 
-            console.log(data)
-            console.log(`Total rain collected: ${userInfo.rainAmount}`);
-            console.log(`Day when the barrel will be full: ${userInfo.fullRainBarrelDay}`);
-            console.log(`Next day of rain: ${userInfo.nextRainDay}`);
-            console.log(`Amount of rain on next rainy day: ${userInfo.nextRainAmount}`);
-        }
-    })
-    .catch(error => console.error(`Error: ${error}`));
+        console.log(data)
+        let totalRain = userInfo.rainAmount || 0;
+        let fullRainBarrelDay = '';
+        let nextRainDay = '';
+        let nextRainAmount = 0;
 
+        data.daily.precipitation_sum.some((precipitation, index) => {
+            totalRain += (precipitation * userInfo.roofSurface);
+            if (totalRain > 400) {
+                fullRainBarrelDay = data.daily.time[index];
+                return true;
+            }
+            if (precipitation > 0 && nextRainDay === '') {
+                nextRainDay = data.daily.time[index];
+                nextRainAmount = precipitation;
+            }
+            return false;
+        });
 
+        userInfo.rainAmount = parseFloat((totalRain > 400 ? 400 : totalRain).toFixed(1));
+        userInfo.fullRainBarrelDay = fullRainBarrelDay ? fullRainBarrelDay : 'Geen volle ton in de komende 7 dagen.';
+        userInfo.nextRainDay = nextRainDay ? nextRainDay : 'Geen regen verwacht komende 7 dagen';
+        userInfo.nextRainAmount = nextRainAmount;
+
+        console.log(`Total rain collected: ${userInfo.rainAmount}`);
+        console.log(`Day when the barrel will be full: ${userInfo.fullRainBarrelDay}`);
+        console.log(`Next day of rain: ${userInfo.nextRainDay}`);
+        console.log(`Amount of rain on next rainy day: ${userInfo.nextRainAmount}`);
+
+        // Save updated userInfo
+        await userInfo.save();
+
+    } catch (error) {
+        console.error(`Error: ${error}`);
+    }
+}
+
+cron.schedule('* * * * *', () => {
+    console.log('Updating weather data...');
+    updateWeatherData();
+});
 
 function server() {
     console.log('The server is running succesfully! at http://localhost:3000/');
 }
 
-app.listen(port, server)
+app.listen(port, () => {
+    console.log('The server is running successfully! at http://localhost:3000/');
+    updateWeatherData(); // Fetch and calculate weather data
+});

@@ -13,6 +13,9 @@
     --darker-green: #399e44;
     --green: #4ECD5D;
     --white: #FFFFFF;
+    --green-grass: #CAF0CE;
+    --yellow-grass: #E4C391;
+    --current-grass: var(--yellow-grass);
 
     /* Fonts */
     --bree: font-family: 'Bree Serif', serif;
@@ -21,6 +24,7 @@
     /* Fonts */
     --bree: font-family: 'Bree Serif', serif;
     --open-sans: font-family: 'Open Sans', sans-serif;
+    
 }
 
 
@@ -121,9 +125,8 @@ nav ul li:hover a {
 }
 
 .rainbarrel_visual_images {
-    display: flex;
-    justify-content: center;
-    margin-left: 2rem;
+    display: grid;
+    justify-items: center;
 }
 
 .rainbarrel_visual_ground {
@@ -149,8 +152,9 @@ nav ul li:hover a {
 }
 
 .rainbarrel_visual_ground::before {
-    background:#CAF0CE;
+    background: var(--green-grass);
     content: '';
+    transition: 1s;
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -160,8 +164,33 @@ nav ul li:hover a {
     transform: translateX(-50%);
 }
 
-.rainbarrel_visual img {
+.green::before {
+    background: var(--green-grass);
+}
+
+.yellow::before {
+    background: var(--yellow-grass);
+}
+
+.rainbarrel_visual img:first-child {
     position: relative;
+}
+
+.rainbarrel_visual .front_barrel {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+}
+
+.rainbarrel_visual svg {
+    height: 100%;
+}
+
+.water1, .water2, .water3, .water4 {
+    position: absolute;
+    bottom: 13px;
+    width: 100%; 
+    height: 70%;
 }
 
 .rainbarrel_amount {
@@ -189,9 +218,6 @@ nav ul li:hover a {
     display: flex;
     justify-content: center;
 }
-
-
-
 
 .outergraph {
     width: 70%;
@@ -562,4 +588,15 @@ fieldset .progress .stap:nth-child(1) {
     color: #3E4F66;
     font-size: 32px;
     font-family: var(--open-sans);
+}
+
+/* ANIMATIONS */
+
+@keyframes grass {
+    form {background-color: var(--yellow-grass);}
+    to {background-color: var(--green-grass);}
+}
+
+.changeGrass::before {
+    animation: grass 1s ease-out 1s forwards;
 }

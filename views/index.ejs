@@ -8,20 +8,7 @@
                     <li><%= userInfo.rainAmount %>/400 L</li>
                 </ul>
             </div>
-            <div class="rainbarrel_visual_ground"></div>
-            <div class="rainbarrel_visual_images">
-            <% if (userInfo.rainAmount == 0) { %>
-                <img src="./images/barrel0.svg" alt="Rain barrel level 1">
-            <% } else if (userInfo.rainAmount >= 1 && userInfo.rainAmount <= 100) { %>
-                <img src="./images/barrel1.svg" alt="Rain barrel level 2">
-            <% } else if (userInfo.rainAmount >= 101 && userInfo.rainAmount <= 200) { %>
-                <img src="./images/barrel2.svg" alt="Rain barrel level 3">
-            <% } else if (userInfo.rainAmount >= 101 && userInfo.rainAmount <= 300) { %>
-                <img src="./images/barrel3.svg" alt="Rain barrel level 4">
-            <% } else if (userInfo.rainAmount >= 151 && userInfo.rainAmount <= 400) { %>
-                <img src="./images/barrel4.svg" alt="Rain barrel level 5">
-            <% } %>
-            </div>
+            <%- include('partials/rainbarrel.ejs') -%>
             <!-- <div class="outergraph">
                 <div class="innergraph" id="rain-amount"></div>
             </div> -->

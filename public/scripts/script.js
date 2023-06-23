@@ -69,27 +69,27 @@ cancelButton.addEventListener('click', () => {
 
 
 
-const fieldset1 = getElementById('fieldset1');
-const fieldset2 = getElementById('fieldset2');
-const fieldset3 = getElementById('fieldset3');
-const fieldset4 = getElementById('fieldset4');
-const fieldset5 = getElementById('fieldset5');
+const fieldset1 = document.getElementById('fieldset1');
+const fieldset2 = document.getElementById('fieldset2');
+const fieldset3 = document.getElementById('fieldset3');
+const fieldset4 = document.getElementById('fieldset4');
+const fieldset5 = document.getElementById('fieldset5');
 
-const fieldset1VolgendeKnop = getElementById('fieldset1-volgende-knop');
-const fieldset2TerugKnop = getElementById('fieldset2-terug-knop');
-const fieldset2VolgendeKnop = getElementById('fieldset2-volgende-knop');
-const fieldset3TerugKnop = getElementById('fieldset3-terug-knop');
-const fieldset3VolgendeKnop = getElementById('fieldset3-volgende-knop');
-const fieldset4TerugKnop = getElementById('fieldset4-terug-knop');
-const fieldset4VolgendeKnop = getElementById('fieldset4-volgende-knop');
-const fieldset5TerugKnop = getElementById('fieldset5-terug-knop');
-const fieldset5VolgendeKnop = getElementById('fieldset5-volgende-knop');
+const fieldset1VolgendeKnop = document.getElementById('fieldset1-volgende-knop');
+const fieldset2TerugKnop = document.getElementById('fieldset2-terug-knop');
+const fieldset2VolgendeKnop = document.getElementById('fieldset2-volgende-knop');
+const fieldset3TerugKnop = document.getElementById('fieldset3-terug-knop');
+const fieldset3VolgendeKnop = document.getElementById('fieldset3-volgende-knop');
+const fieldset4TerugKnop = document.getElementById('fieldset4-terug-knop');
+const fieldset4VolgendeKnop = document.getElementById('fieldset4-volgende-knop');
+const fieldset5TerugKnop = document.getElementById('fieldset5-terug-knop');
+const fieldset5VolgendeKnop = document.getElementById('fieldset5-volgende-knop');
 
-const fieldsetStap1 = getElementById('fieldset-stap1');
-const fieldsetStap2 = getElementById('fieldset-stap2');
-const fieldsetStap3 = getElementById('fieldset-stap3');
-const fieldsetStap4 = getElementById('fieldset-stap4');
-const fieldsetStap5 = getElementById('fieldset-stap5');
+const fieldsetStap1 = document.getElementById('fieldset-stap1');
+const fieldsetStap2 = document.getElementById('fieldset-stap2');
+const fieldsetStap3 = document.getElementById('fieldset-stap3');
+const fieldsetStap4 = document.getElementById('fieldset-stap4');
+const fieldsetStap5 = document.getElementById('fieldset-stap5');
 
 fieldset1VolgendeKnop.addEventListener('click', function(event) {
     event.preventDefault();

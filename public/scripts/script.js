@@ -66,3 +66,142 @@ cancelButton.addEventListener('click', () => {
     console.log('Cancel button clicked');
     popup.classList.add('none');
 });
+
+
+
+const fieldset1 = getElementById('fieldset1');
+const fieldset2 = getElementById('fieldset2');
+const fieldset3 = getElementById('fieldset3');
+const fieldset4 = getElementById('fieldset4');
+const fieldset5 = getElementById('fieldset5');
+
+const fieldset1VolgendeKnop = getElementById('fieldset1-volgende-knop');
+const fieldset2TerugKnop = getElementById('fieldset2-terug-knop');
+const fieldset2VolgendeKnop = getElementById('fieldset2-volgende-knop');
+const fieldset3TerugKnop = getElementById('fieldset3-terug-knop');
+const fieldset3VolgendeKnop = getElementById('fieldset3-volgende-knop');
+const fieldset4TerugKnop = getElementById('fieldset4-terug-knop');
+const fieldset4VolgendeKnop = getElementById('fieldset4-volgende-knop');
+const fieldset5TerugKnop = getElementById('fieldset5-terug-knop');
+const fieldset5VolgendeKnop = getElementById('fieldset5-volgende-knop');
+
+const fieldsetStap1 = getElementById('fieldset-stap1');
+const fieldsetStap2 = getElementById('fieldset-stap2');
+const fieldsetStap3 = getElementById('fieldset-stap3');
+const fieldsetStap4 = getElementById('fieldset-stap4');
+const fieldsetStap5 = getElementById('fieldset-stap5');
+
+fieldset1VolgendeKnop.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    fieldset1.style.display = "none";
+    fieldset2.style.display = "block";
+
+    fieldsetStap1.style.width = "0.6em";
+    fieldsetStap1.style.height = "0.6em";
+    fieldsetStap1.style.backgroundColor = "#EDEDED";
+    fieldsetStap2.style.width = "1.2em";
+    fieldsetStap2.style.height = "1.2em";
+    fieldsetStap2.style.backgroundColor = "#36A734";
+});
+
+fieldset2TerugKnop.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    fieldset1.style.display = "block";
+    fieldset2.style.display = "none";
+
+    fieldsetStap2.style.width = "0.6em";
+    fieldsetStap2.style.height = "0.6em";
+    fieldsetStap2.style.backgroundColor = "#EDEDED";
+    fieldsetStap1.style.width = "1.2em";
+    fieldsetStap1.style.height = "1.2em";
+    fieldsetStap1.style.backgroundColor = "#36A734";
+});
+
+fieldset2VolgendeKnop.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    fieldset2.style.display = "none";
+    fieldset3.style.display = "block";
+
+    fieldsetStap2.style.width = "0.6em";
+    fieldsetStap2.style.height = "0.6em";
+    fieldsetStap2.style.backgroundColor = "#EDEDED";
+    fieldsetStap3.style.width = "1.2em";
+    fieldsetStap3.style.height = "1.2em";
+    fieldsetStap3.style.backgroundColor = "#36A734";
+});
+
+fieldset3TerugKnop.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    fieldset2.style.display = "block";
+    fieldset3.style.display = "none";
+
+    fieldsetStap3.style.width = "0.6em";
+    fieldsetStap3.style.height = "0.6em";
+    fieldsetStap3.style.backgroundColor = "#EDEDED";
+    fieldsetStap2.style.width = "1.2em";
+    fieldsetStap2.style.height = "1.2em";
+    fieldsetStap2.style.backgroundColor = "#36A734";
+});
+
+fieldset3VolgendeKnop.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    fieldset3.style.display = "none";
+    fieldset4.style.display = "block";
+
+    fieldsetStap3.style.width = "0.6em";
+    fieldsetStap3.style.height = "0.6em";
+    fieldsetStap2.style.backgroundColor = "#EDEDED";
+    fieldsetStap4.style.width = "1.2em";
+    fieldsetStap4.style.height = "1.2em";
+    fieldsetStap4.style.backgroundColor = "#36A734";
+});
+
+fieldset4TerugKnop.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    fieldset3.style.display = "block";
+    fieldset4.style.display = "none";
+
+    fieldsetStap4.style.width = "0.6em";
+    fieldsetStap4.style.height = "0.6em";
+    fieldsetStap4.style.backgroundColor = "#EDEDED";
+    fieldsetStap3.style.width = "1.2em";
+    fieldsetStap3.style.height = "1.2em";
+    fieldsetStap3.style.backgroundColor = "#36A734";
+});
+
+fieldset4VolgendeKnop.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    fieldset4.style.display = "none";
+    fieldset5.style.display = "block";
+
+    fieldsetStap4.style.width = "0.6em";
+    fieldsetStap4.style.height = "0.6em";
+    fieldsetStap4.style.backgroundColor = "#EDEDED";
+    fieldsetStap5.style.width = "1.2em";
+    fieldsetStap5.style.height = "1.2em";
+    fieldsetStap5.style.backgroundColor = "#36A734";
+});
+
+fieldset5TerugKnop.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    fieldset4.style.display = "block";
+    fieldset5.style.display = "none";
+
+    fieldsetStap5.style.width = "0.6em";
+    fieldsetStap5.style.height = "0.6em";
+    fieldsetStap5.style.backgroundColor = "#EDEDED";
+    fieldsetStap4.style.width = "1.2em";
+    fieldsetStap4.style.height = "1.2em";
+    fieldsetStap4.style.backgroundColor = "#36A734";
+});
+
+
+

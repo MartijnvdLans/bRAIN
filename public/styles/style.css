@@ -1,6 +1,6 @@
 *, html {
     padding: 0;
-    margin: 0;
+    margin: auto;
     box-sizing: border-box;
     overflow-x: hidden;
 }
@@ -10,9 +10,10 @@
     --dark-blue: #3E4F66;
     --light-blue: #7FAEC5;
     --turq: #6DC2C9;
-    --darker-green: #399e44;
+    --darker-green: #44b552;
     --green: #4ECD5D;
     --white: #FFFFFF;
+    --grey: #EDEDED;
 
     /* Fonts */
     --bree: font-family: 'Bree Serif', serif;
@@ -26,9 +27,9 @@
 
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     position: relative;
-    width: 90vw;
+    width: 85vw;
     min-height: 100vh;
 }
 
@@ -437,9 +438,19 @@ fieldset {
     height: 100vh;
 }
 
+fieldset:nth-of-type(3), fieldset:nth-of-type(4), fieldset:nth-of-type(5) {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    align-content: space-between;
+}
+
 fieldset .text-button-progress {
     position: absolute;
     bottom: 0;
+}
+
+fieldset .button-progress {
+    width: 100%;
 }
 
 fieldset h1 {
@@ -448,18 +459,16 @@ fieldset h1 {
     font-size: 48px;
     font-weight: 400;
     text-align: center;
-}
-
-fieldset .volgende-button {
-    background-color: var(#3498DB);
+    padding-bottom: 0.4em;
 }
 
 fieldset h2 {
+    text-align: left;
     color: var(--dark-blue);
     font-family: 'Bree Serif', serif;
     font-size: 2em;
     font-weight: 400;
-    padding-bottom: 0.2em;
+    padding-bottom: 0.4em;
 }
 
 fieldset label {
@@ -467,6 +476,7 @@ fieldset label {
     font-family: var(--open-sans);
     font-size: 1.2em;
     font-weight: 400;
+    line-height: 1.4;
 }
 
 fieldset p {
@@ -482,7 +492,7 @@ fieldset img {
 }
 
 fieldset .buttons {
-    padding: 1em 0;
+    padding: 2em 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 0.5em;
@@ -490,9 +500,9 @@ fieldset .buttons {
 
 fieldset .terug-button {
     color: var(--green);
-    font-family: var(--bree);
-    font-size: 1.2em;
-    background-color: linear-gradient(var(--darker-green), var(--green));
+    font-family: 'Bree Serif', serif;
+    font-size: 1.4em;
+    background-color: var(--white);
     border: solid 2px var(--green);
     border-radius: 20em;
     width: 100%;
@@ -501,13 +511,13 @@ fieldset .terug-button {
 
 fieldset .volgende-button {
     color: var(--white);
-    font-family: var(--bree);
-    font-size: 1.2em;
-    background-color: linear-gradient(#36A734, #4ECD5D);
+    font-family: 'Bree Serif', serif;
+    font-size: 1.4em;
+    background: linear-gradient(var(--green), var(--darker-green));
+    border: none;
     border-radius: 20em;
     width: 100%;
     height: 3em;
-    border: none;
 }
 
 fieldset .progress {
@@ -521,7 +531,7 @@ fieldset .progress {
 
 fieldset .progress .stap {
     display: flex;
-    background-color: lightgray;
+    background-color: #EDEDED;
     width: 0.6em;
     height: 0.6em;
     border-radius: 100em;
@@ -531,4 +541,45 @@ fieldset .progress .stap:nth-child(1) {
     background-color: #36A734;
     width: 1.2em;
     height: 1.2em;
+}
+
+fieldset input {
+    font-family: 'Bree Serif', serif;
+    width: 100%;
+    font-size: 1.4em;
+    border-radius: 0.6em;
+    border: none;
+    margin-top: 0.4em;
+    padding: 0.8em;
+    background-color: var(--grey);
+    color: var(--green);
+}
+
+fieldset input:focus {
+    border: none;
+    outline: none;
+}
+
+label[for=boardingDak] {
+    font-family: 'Bree Serif', serif;
+    font-size: 1.4em;
+}
+
+
+
+#fieldset1 {
+    display: block;
+}
+#fieldset2, #fieldset3, #fieldset4, #fieldset5 {
+    display: block;
+}
+
+
+
+/* Regen */
+
+.rain-animatie .rain {
+    height: 1em;
+    width: 0.2em;
+    background-color: var(--light-blue);
 }

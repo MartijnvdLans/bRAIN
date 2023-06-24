@@ -580,6 +580,7 @@ fieldset .progress .stap:nth-child(1) {
     color: #3E4F66;
     font-size: 32px;
     font-family: var(--open-sans);
+}
   
 fieldset input {
     font-family: 'Bree Serif', serif;

@@ -59,6 +59,9 @@ confirmEmptyButton.addEventListener('click', () => {
     .then(data => {
         console.log(data.message);
         window.location.reload();
+    })
+    .catch(error => {
+        console.error('Error:', error);
     });
 });
 

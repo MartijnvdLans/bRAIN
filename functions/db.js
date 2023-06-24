@@ -18,6 +18,9 @@ const UserInfoSchema = new mongoose.Schema({
   rainBarrels: Number,
   roofSurface: Number,
   rainBarrelEmptied: Boolean,
+  nextRainDay: String,
+  fullRainBarrelDay: String,
+  nextRainAmount: Number,
 });
 
 // Define a model

@@ -6,6 +6,8 @@ import bodyParser from 'body-parser';
 import { getWeatherData } from './functions/weatherAPI.js';
 import { UserInfo } from './functions/db.js';
 import cron from 'node-cron';
+import { collectAndStoreRainData } from './functions/collectAndStoreRainData.js';
+import { calculateAndStoreStatistics } from './functions/calculateAndStoreStatistics.js';
 
 const app = express();
 const port = 4600;
@@ -60,24 +62,27 @@ let userInfo = {
     }
 });
 
-app.post('/firstInfo', (req, res) => {
-    console.log('firstInfo doet het')
+app.post('/firstInfo', async (req, res) => {  // Note the 'async' keyword added here
+    console.log('firstInfo doet het');
     const userInfo = new UserInfo({
         roofSurface: req.body.boardingDak,
         rainBarrels: req.body.boardingPijpen,
         waterDrains: req.body.boardingTonnen,
         rainAmount: 0, 
+        totalRainCollected: 0, // Initialize totalRainCollected to 0
         rainBarrelEmptied: false,
     });
 
-    userInfo.save()
-        .then(doc => {
-            return res.redirect('/');
-        })
-        .catch(err => {
-            return res.status(500).send(err);
-        });
+    try {
+        const doc = await userInfo.save();  // Await the save operation
+        await updateWeatherData();  // Fetch and calculate weather data after saving
+        return res.redirect('/');
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send(err);
+    }
 });
+
 
 app.get('/getUserInfo', (req, res) => {
     UserInfo.find({}, (err, userInfos) => {  // Find all UserInfo documents
@@ -111,12 +116,14 @@ app.get('/settings', async (req, res) => {
 app.get('/statistics', async (req, res) => {
     const currentPage = 'statistics';
     try {
-        const userInfo = await UserInfo.findOne().sort('-_id').exec();
+        const userInfo = await UserInfo.findOne().sort('-_id').exec(); // Use appropriate DB call here
+
         res.render('statistics', { 
             userInfo: userInfo, 
             currentPage, 
             nextRainDay: userInfo.nextRainDay,
-            fullRainBarrelDay: userInfo.fullRainBarrelDay
+            fullRainBarrelDay: userInfo.fullRainBarrelDay,
+            totalRainCollected: userInfo.totalRainCollected // new line
         });
     } catch (err) {
         console.log(err);
@@ -191,39 +198,8 @@ async function updateWeatherData() {
     try {
         const userInfo = await UserInfo.findOne().sort('-_id').exec();
         const data = await getWeatherData(52.37, 4.89, 'precipitation_sum', 'Europe/Berlin');
-
-        console.log(data)
-        let totalRain = userInfo.rainAmount || 0;
-        let fullRainBarrelDay = '';
-        let nextRainDay = '';
-        let nextRainAmount = 0;
-
-        data.daily.precipitation_sum.some((precipitation, index) => {
-            totalRain += (precipitation * userInfo.roofSurface);
-            if (totalRain > 400) {
-                fullRainBarrelDay = data.daily.time[index];
-                return true;
-            }
-            if (precipitation > 0 && nextRainDay === '') {
-                nextRainDay = data.daily.time[index];
-                nextRainAmount = precipitation;
-            }
-            return false;
-        });
-
-        userInfo.rainAmount = parseFloat((totalRain > 400 ? 400 : totalRain).toFixed(1));
-        userInfo.fullRainBarrelDay = fullRainBarrelDay ? fullRainBarrelDay : 'Geen volle ton in de komende 7 dagen.';
-        userInfo.nextRainDay = nextRainDay ? nextRainDay : 'Geen regen verwacht komende 7 dagen';
-        userInfo.nextRainAmount = nextRainAmount;
-
-        console.log(`Total rain collected: ${userInfo.rainAmount}`);
-        console.log(`Day when the barrel will be full: ${userInfo.fullRainBarrelDay}`);
-        console.log(`Next day of rain: ${userInfo.nextRainDay}`);
-        console.log(`Amount of rain on next rainy day: ${userInfo.nextRainAmount}`);
-
-        // Save updated userInfo
-        await userInfo.save();
-
+        await collectAndStoreRainData(data, userInfo);
+        await calculateAndStoreStatistics(data, userInfo);
     } catch (error) {
         console.error(`Error: ${error}`);
     }
@@ -240,5 +216,4 @@ function server() {
 
 app.listen(port, () => {
     console.log('The server is running successfully! at http://localhost:3000/');
-    updateWeatherData(); // Fetch and calculate weather data
 });

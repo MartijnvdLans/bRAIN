@@ -96,7 +96,7 @@ app.get('/empty', (req, res) => {
         res.render('emptyError')
     }
 });
-      
+
 app.get('/settings', async (req, res) => {
     const currentPage = 'settings';
     try {

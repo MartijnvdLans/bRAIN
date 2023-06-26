@@ -89,7 +89,7 @@ app.get('/getUserInfo', (req, res) => {
 app.get('/empty', (req, res) => {
     console.log(userInfo.rainAmount)
     if (userInfo.rainAmount > 1) {
-        userInfo.rainAmount = 100
+        userInfo.rainAmount = 50
         console.log(userInfo.rainAmount)
         res.render('empty')
     } else {
@@ -166,7 +166,7 @@ app.post('/empty', async (req, res) => {
     try {
         console.log('Emptying the rain barrel...');
         const userInfo = await UserInfo.findOne().sort('-_id').exec();
-        userInfo.rainAmount = 100;
+        userInfo.rainAmount = 50;
         userInfo.rainBarrelEmptied = true; // Set this to true when the rain barrel is emptied
         await userInfo.save();
         res.status(200).json({ message: "Rain barrel emptied successfully." });

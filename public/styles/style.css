@@ -291,7 +291,7 @@ nav ul li:hover a {
 
 /* gegevens */
 
-h2 {
+.formLabel h2 {
     text-align: center;
     margin-top: 2rem;
     font-size: 29px;
@@ -423,7 +423,7 @@ ul {
 }
 
 @keyframes goUp {
-    form {
+    from {
     }
     to {
         margin-top: -100px;
@@ -432,34 +432,47 @@ ul {
 
 
 
+
+
+.onboarding {
+    width: 85vw;
+    margin: auto;
+}
+
 fieldset {
     position: relative;
     border: none;
-    height: 100vh;
 }
 
-fieldset:nth-of-type(3), fieldset:nth-of-type(4), fieldset:nth-of-type(5) {
+#fieldset1, #fieldset2 {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: space-between;
+}
+
+#fieldset1 .text-button-progress, #fieldset2 .text-button-progress {
+    display: grid;
+    grid-gap: 1.5em;
+}
+
+#fieldset3, #fieldset4, #fieldset5 {
+    height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
     align-content: space-between;
 }
 
-fieldset .text-button-progress {
-    position: absolute;
-    bottom: 0;
-}
-
-fieldset .button-progress {
-    width: 100%;
-}
-
 fieldset h1 {
     color: var(--dark-blue);
     font-family: 'Bree Serif', serif;
-    font-size: 48px;
+    font-size: 3em;
     font-weight: 400;
     text-align: center;
+<<<<<<< Updated upstream
     padding-bottom: 0.4em;
+=======
+>>>>>>> Stashed changes
 }
 
 fieldset h2 {
@@ -468,7 +481,6 @@ fieldset h2 {
     font-family: 'Bree Serif', serif;
     font-size: 2em;
     font-weight: 400;
-    padding-bottom: 0.4em;
 }
 
 fieldset label {
@@ -487,15 +499,21 @@ fieldset p {
 }
 
 fieldset img {
-    padding-top: 4em;
     width: 100%;
 }
 
+fieldset .button-progress {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+    grid-gap: 1.5em;
+}
+
 fieldset .buttons {
-    padding: 2em 0;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.5em;
+    grid-column-gap: 0.5em;
 }
 
 fieldset .terug-button {
@@ -520,6 +538,17 @@ fieldset .volgende-button {
     height: 3em;
 }
 
+fieldset .rondaf-button {
+    color: var(--white);
+    font-family: 'Bree Serif', serif;
+    font-size: 1.4em;
+    background: linear-gradient(var(--green), var(--darker-green));
+    border: none;
+    border-radius: 20em;
+    width: 100%;
+    height: 3em;
+}
+
 fieldset .progress {
     display: grid;
     place-items: center;
@@ -529,7 +558,38 @@ fieldset .progress {
     margin: auto;
 }
 
-fieldset .progress .stap {
+  
+fieldset input {
+    font-family: 'Bree Serif', serif;
+    width: 100%;
+    font-size: 1.4em;
+    border-radius: 0.6em;
+    border: none;
+    margin-top: 0.4em;
+    padding: 0.8em;
+    background-color: var(--grey);
+    color: var(--green);
+}
+
+fieldset input:focus {
+    border: none;
+    outline: none;
+}
+
+label[for=boardingDak], label[for=boardingPijpen], label[for=boardingTonnen] {
+    font-family: 'Bree Serif', serif;
+    font-size: 1.4em;
+}
+
+
+
+#fieldset2, #fieldset3, #fieldset4, #fieldset5 {
+    display: none;
+}
+
+
+
+.stap {
     display: flex;
     background-color: #EDEDED;
     width: 0.6em;
@@ -537,12 +597,13 @@ fieldset .progress .stap {
     border-radius: 100em;
 }
 
-fieldset .progress .stap:nth-child(1) {
+.stap.current {
     background-color: #36A734;
     width: 1.2em;
     height: 1.2em;
 }
 
+<<<<<<< Updated upstream
 fieldset input {
     font-family: 'Bree Serif', serif;
     width: 100%;
@@ -574,6 +635,48 @@ label[for=boardingDak] {
     display: block;
 }
 
+=======
+
+
+.error-message {
+    color: red;
+    font-family: 'Bree Serif', serif;
+    font-size: 1.4em;
+}
+
+
+
+
+
+/* Statistieken pagina */
+
+.stats_visual_section {
+    background-color:#EDEDED ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.stats_visual_section h3 {
+    font-size: 20px;
+    font-family: 'Bree Serif', serif;
+    color: #3E4F66;
+    padding-bottom: 1rem;
+    font-weight: 300;
+}
+
+.stats_visual_section p {
+    color: #3E4F66;
+    font-size: 32px;
+    font-family: var(--open-sans);
+}
+
+
+
+>>>>>>> Stashed changes
 
 
 /* Regen */

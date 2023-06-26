@@ -45,12 +45,15 @@ const cancelButton = document.querySelector('#popup-2 .around button:first-child
 const popup = document.querySelector('#popup-2');
 
 // When the empty button is clicked, show the popup
-emptyButton.addEventListener('click', (e) => {
-    console.log('Empty button clicked');
-    e.preventDefault();
-    popup.classList.remove('none');
-});
+if (emptyButton) {
+    emptyButton.addEventListener('click', (e) => {
+        console.log('Empty button clicked');
+        e.preventDefault();
+        popup.classList.remove('none');
+    });
+    }
 
+<<<<<<< Updated upstream
 confirmEmptyButton.addEventListener('click', () => {
     fetch('/empty', {
         method: 'POST'
@@ -59,15 +62,103 @@ confirmEmptyButton.addEventListener('click', () => {
     .then(data => {
         console.log(data.message);
         window.location.reload();
+=======
+    if (confirmEmptyButton) {
+        confirmEmptyButton.addEventListener('click', () => {
+            fetch('/empty', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+        }
+
+        if (cancelButton) {
+            cancelButton.addEventListener('click', () => {
+                console.log('Cancel button clicked');
+                popup.classList.add('none');
+            });
+            }
+
+
+
+
+
+const fieldsets = document.querySelectorAll('fieldset');
+const stappen = document.querySelectorAll('.stap');
+let currentFieldsetIndex = 0;
+
+function updateProgress() {
+    stappen.forEach((stap, index) => {
+      if (index === currentFieldsetIndex) {
+        stap.classList.add('current');
+      } else {
+        stap.classList.remove('current');
+      }
+    });
+  }    
+
+function showFieldset(index) {
+    fieldsets.forEach((fieldset, i) => {
+        if (i === index) {
+        fieldset.style.display = 'grid';
+        currentFieldsetIndex = index; // Update de huidige fieldset-index
+        } else {
+        fieldset.style.display = 'none';
+        }
+    });
+
+    updateProgress(); // Roep de updateProgress() functie aan
+}
+
+function nextFieldset() {
+    if (currentFieldsetIndex < fieldsets.length - 1) {
+      const isFormValid = validateForm(); // Valideer het formulier voordat je doorgaat
+  
+      if (isFormValid) {
+        currentFieldsetIndex++;
+        showFieldset(currentFieldsetIndex);
+        updateProgress();
+      } 
+    }
+  }  
+
+function previousFieldset() {
+    if (currentFieldsetIndex > 0) {
+        currentFieldsetIndex--;
+        showFieldset(currentFieldsetIndex);
+        updateProgress();
+    }
+}
+
+const volgendeButtons = document.querySelectorAll('.volgende-button');
+    volgendeButtons.forEach((button) => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        nextFieldset();
+>>>>>>> Stashed changes
     });
 });
 
-cancelButton.addEventListener('click', () => {
-    console.log('Cancel button clicked');
-    popup.classList.add('none');
+const terugButtons = document.querySelectorAll('.terug-button');
+    terugButtons.forEach((button) => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        previousFieldset();
+    });
 });
 
+const rondAfButton = document.getElementById('rondaf-button');
+rondAfButton.addEventListener('click', function(event) {
+  const isFormValid = validateForm(); // Functie om het formulier te valideren
 
+<<<<<<< Updated upstream
 
 const fieldset1 = getElementById('fieldset1');
 const fieldset2 = getElementById('fieldset2');
@@ -92,116 +183,35 @@ const fieldsetStap4 = getElementById('fieldset-stap4');
 const fieldsetStap5 = getElementById('fieldset-stap5');
 
 fieldset1VolgendeKnop.addEventListener('click', function(event) {
+=======
+  if (!isFormValid) {
+>>>>>>> Stashed changes
     event.preventDefault();
-
-    fieldset1.style.display = "none";
-    fieldset2.style.display = "block";
-
-    fieldsetStap1.style.width = "0.6em";
-    fieldsetStap1.style.height = "0.6em";
-    fieldsetStap1.style.backgroundColor = "#EDEDED";
-    fieldsetStap2.style.width = "1.2em";
-    fieldsetStap2.style.height = "1.2em";
-    fieldsetStap2.style.backgroundColor = "#36A734";
+    return; // Stop de functie als het formulier ongeldig is
+  }
 });
 
-fieldset2TerugKnop.addEventListener('click', function(event) {
-    event.preventDefault();
 
-    fieldset1.style.display = "block";
-    fieldset2.style.display = "none";
-
-    fieldsetStap2.style.width = "0.6em";
-    fieldsetStap2.style.height = "0.6em";
-    fieldsetStap2.style.backgroundColor = "#EDEDED";
-    fieldsetStap1.style.width = "1.2em";
-    fieldsetStap1.style.height = "1.2em";
-    fieldsetStap1.style.backgroundColor = "#36A734";
-});
-
-fieldset2VolgendeKnop.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    fieldset2.style.display = "none";
-    fieldset3.style.display = "block";
-
-    fieldsetStap2.style.width = "0.6em";
-    fieldsetStap2.style.height = "0.6em";
-    fieldsetStap2.style.backgroundColor = "#EDEDED";
-    fieldsetStap3.style.width = "1.2em";
-    fieldsetStap3.style.height = "1.2em";
-    fieldsetStap3.style.backgroundColor = "#36A734";
-});
-
-fieldset3TerugKnop.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    fieldset2.style.display = "block";
-    fieldset3.style.display = "none";
-
-    fieldsetStap3.style.width = "0.6em";
-    fieldsetStap3.style.height = "0.6em";
-    fieldsetStap3.style.backgroundColor = "#EDEDED";
-    fieldsetStap2.style.width = "1.2em";
-    fieldsetStap2.style.height = "1.2em";
-    fieldsetStap2.style.backgroundColor = "#36A734";
-});
-
-fieldset3VolgendeKnop.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    fieldset3.style.display = "none";
-    fieldset4.style.display = "block";
-
-    fieldsetStap3.style.width = "0.6em";
-    fieldsetStap3.style.height = "0.6em";
-    fieldsetStap2.style.backgroundColor = "#EDEDED";
-    fieldsetStap4.style.width = "1.2em";
-    fieldsetStap4.style.height = "1.2em";
-    fieldsetStap4.style.backgroundColor = "#36A734";
-});
-
-fieldset4TerugKnop.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    fieldset3.style.display = "block";
-    fieldset4.style.display = "none";
-
-    fieldsetStap4.style.width = "0.6em";
-    fieldsetStap4.style.height = "0.6em";
-    fieldsetStap4.style.backgroundColor = "#EDEDED";
-    fieldsetStap3.style.width = "1.2em";
-    fieldsetStap3.style.height = "1.2em";
-    fieldsetStap3.style.backgroundColor = "#36A734";
-});
-
-fieldset4VolgendeKnop.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    fieldset4.style.display = "none";
-    fieldset5.style.display = "block";
-
-    fieldsetStap4.style.width = "0.6em";
-    fieldsetStap4.style.height = "0.6em";
-    fieldsetStap4.style.backgroundColor = "#EDEDED";
-    fieldsetStap5.style.width = "1.2em";
-    fieldsetStap5.style.height = "1.2em";
-    fieldsetStap5.style.backgroundColor = "#36A734";
-});
-
-fieldset5TerugKnop.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    fieldset4.style.display = "block";
-    fieldset5.style.display = "none";
-
-    fieldsetStap5.style.width = "0.6em";
-    fieldsetStap5.style.height = "0.6em";
-    fieldsetStap5.style.backgroundColor = "#EDEDED";
-    fieldsetStap4.style.width = "1.2em";
-    fieldsetStap4.style.height = "1.2em";
-    fieldsetStap4.style.backgroundColor = "#36A734";
-});
+function validateForm() {
+    const currentFieldset = fieldsets[currentFieldsetIndex];
+    const inputs = currentFieldset.querySelectorAll('input');
+    const errorMessages = currentFieldset.querySelectorAll('.error-message');
+    let isValid = true;
+    
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].value === '') {
+        errorMessages[i].textContent = 'Dit veld moet worden ingevuld';
+        isValid = false;
+      } else {
+        errorMessages[i].textContent = ''; // Leeg het foutbericht als het veld is ingevuld
+      }
+    }
+    
+    return isValid;
+  }
+  
+  
+      
 
 
 

@@ -469,10 +469,6 @@ fieldset h1 {
     font-size: 3em;
     font-weight: 400;
     text-align: center;
-<<<<<<< Updated upstream
-    padding-bottom: 0.4em;
-=======
->>>>>>> Stashed changes
 }
 
 fieldset h2 {
@@ -603,39 +599,6 @@ label[for=boardingDak], label[for=boardingPijpen], label[for=boardingTonnen] {
     height: 1.2em;
 }
 
-<<<<<<< Updated upstream
-fieldset input {
-    font-family: 'Bree Serif', serif;
-    width: 100%;
-    font-size: 1.4em;
-    border-radius: 0.6em;
-    border: none;
-    margin-top: 0.4em;
-    padding: 0.8em;
-    background-color: var(--grey);
-    color: var(--green);
-}
-
-fieldset input:focus {
-    border: none;
-    outline: none;
-}
-
-label[for=boardingDak] {
-    font-family: 'Bree Serif', serif;
-    font-size: 1.4em;
-}
-
-
-
-#fieldset1 {
-    display: block;
-}
-#fieldset2, #fieldset3, #fieldset4, #fieldset5 {
-    display: block;
-}
-
-=======
 
 
 .error-message {
@@ -676,7 +639,6 @@ label[for=boardingDak] {
 
 
 
->>>>>>> Stashed changes
 
 
 /* Regen */

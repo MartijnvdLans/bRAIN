@@ -39,7 +39,6 @@ let userInfo = {
     const currentPage = 'home'
     let options = { day: 'numeric', month: 'long', year: 'numeric' };
     let currentDate = new Date().toLocaleDateString('nl-NL', options);
-
     try {
         // Get the most recent UserInfo from the database
         const userInfo = await UserInfo.findOne().sort('-_id').exec();

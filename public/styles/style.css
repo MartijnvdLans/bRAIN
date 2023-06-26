@@ -13,6 +13,9 @@
     --darker-green: #44b552;
     --green: #4ECD5D;
     --white: #FFFFFF;
+    --green-grass: #CAF0CE;
+    --yellow-grass: #E4C391;
+    --current-grass: var(--yellow-grass);
     --grey: #EDEDED;
 
     /* Fonts */
@@ -22,14 +25,21 @@
     /* Fonts */
     --bree: font-family: 'Bree Serif', serif;
     --open-sans: font-family: 'Open Sans', sans-serif;
+    
 }
 
-
+h1 {
+    text-align: center;
+    margin: 1rem;
+    font-family: 'Bree Serif', serif;
+    
+    font-size: 2.1rem;
+}
 
 body {
     font-family: 'Open Sans', sans-serif;
     position: relative;
-    width: 85vw;
+    width: 100vw;
     min-height: 100vh;
 }
 
@@ -63,7 +73,7 @@ nav {
 
 nav svg {
     height: 30px;
-    stroke: var(--inactive-blue);
+    stroke: var(--light-blue);
 }
 
 nav ul {
@@ -82,25 +92,25 @@ nav ul li {
 }
 
 nav ul li:hover svg {
-    stroke: var(--active-blue);
+    stroke: var(--dark-blue);
 }
 
 nav ul li a {
-    color: var(--inactive-blue);
+    color: var(--light-blue);
     text-decoration: none;
     margin-top: .5em;
 }
 
 nav ul li:hover a {
-    color: var(--active-blue);
+    color: var(--dark-blue);
 }
 
 .active a {
-    color: var(--active-blue);
+    color: var(--dark-blue);
 }
 
 .active svg {
-    stroke: var(--active-blue);
+    stroke: var(--dark-blue);
 }
 
 /* MAIN */
@@ -122,9 +132,9 @@ nav ul li:hover a {
 }
 
 .rainbarrel_visual_images {
-    display: flex;
-    justify-content: center;
-    margin-left: 2rem;
+    display: grid;
+    justify-items: center;
+    overflow: hidden;
 }
 
 .rainbarrel_visual_ground {
@@ -150,8 +160,9 @@ nav ul li:hover a {
 }
 
 .rainbarrel_visual_ground::before {
-    background:#CAF0CE;
+    background: var(--green-grass);
     content: '';
+    transition: 1s;
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -161,8 +172,162 @@ nav ul li:hover a {
     transform: translateX(-50%);
 }
 
-.rainbarrel_visual img {
+.green::before {
+    background: var(--green-grass);
+}
+
+.yellow::before {
+    background: var(--yellow-grass);
+}
+
+.rainbarrel_visual img:first-child {
     position: relative;
+}
+
+.rainbarrel_visual .front_barrel {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+}
+
+.rainbarrel_visual svg {
+    height: 100%;
+}
+
+.barrel {
+    height: 400px;
+    width: 250px;
+    background-color: #4E5F74;
+    position: relative;
+    border-radius: 80px;
+    overflow: hidden;
+    display: flex;
+    top: 5px;
+}
+
+.water {
+    height: 50%;
+    width: 100%;
+    background-color: #3498DB;
+    align-self: flex-end;
+    overflow:initial;
+    transition: 1.5s;
+    transition-timing-function: ease-out;
+    position: absolute;
+}
+
+.stripes {
+    position: absolute;
+    height: 100%;
+    overflow: hidden;
+}
+
+.front {
+    position: absolute;
+    width: 300%;
+    top: -85%;
+    margin-left: -100%;
+}
+
+.front:nth-of-type(2) {
+    top: -60%;
+}
+
+.front:nth-of-type(3) {
+    top: -35%;
+}
+
+.front:nth-of-type(4) {
+    top: -10%;
+}
+
+.empty {
+    height: 50px!important;
+}
+
+.water-top {
+    width: 100%;
+    height: 50px;
+    border-radius: 90%;
+    background-color: #6dc4ff;
+    margin-top: -25px;
+}
+
+.top-barrel {
+    width: 240px;
+    height: 50px;
+    border-radius: 90%;
+    position: absolute;
+    background-color: #4E5F74;
+    z-index: 1;
+}
+
+.opening {
+    height: 10px;
+    width: 50px;
+    position: absolute;
+    background-color: #3E4F66;
+    border-radius: 90%;
+    left: 30px;
+    top: 20px;
+}
+
+.tap {
+    width: 25px;
+    background-color: #3E4F66;
+    height: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(120px, 230px);
+}
+
+.tap-side {
+    width: 15px;
+    background-color: #3E4F66;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(135px, 215px);
+    border-radius: 5px;
+}
+
+.tap-tap {
+    width: 40px;
+    background-color: #3E4F66;
+    height: 15px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 90% 10px 10px 90%;
+    transform: translate(120px, 210px) rotate(0deg);
+    transition: .25s;
+}
+
+.open-tap {
+    transform: translate(120px, 210px) rotate(-20deg);
+}
+
+.no-stream {
+    transform: translate(137px, 310px)!important;
+    height: 0px!important;
+}
+
+.water-stream {
+    position: absolute;
+    height: 0px;
+    width: 11px;
+    background-color: #3498DB;
+    left: 50%;
+    top: 50%;
+    transform: translate(137px, 250px);
+    transition: .25s;
+}
+
+.go-stream {
+    transform: translate(137px, 250px);
+    height: 60px;
 }
 
 .rainbarrel_amount {
@@ -190,9 +355,6 @@ nav ul li:hover a {
     display: flex;
     justify-content: center;
 }
-
-
-
 
 .outergraph {
     width: 70%;
@@ -288,6 +450,20 @@ nav ul li:hover a {
     animation-delay: 3s;
 }
 
+/* DOWNLOAD BUTTON */
+
+.add-button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1em;
+    background-color: var(--light-blue);
+    color: #fff;
+    border: none;
+    outline: none;
+}
+
 
 /* gegevens */
 
@@ -326,7 +502,7 @@ nav ul li:hover a {
 .formLabel span {
     position: absolute;
     bottom: 30px;
-    left: 90px;
+    right: 0px;
     font-weight: bold;
 }
 
@@ -471,6 +647,14 @@ fieldset h1 {
     text-align: center;
 }
 
+fieldset img {
+    width: 100vw;
+}
+
+fieldset .volgende-button {
+    background-color: var(#3498DB);
+}
+
 fieldset h2 {
     text-align: left;
     color: var(--dark-blue);
@@ -554,7 +738,56 @@ fieldset .progress {
     margin: auto;
 }
 
-  
+fieldset .progress .stap {
+    display: flex;
+    background-color: #EDEDED;
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 100em;
+}
+
+fieldset .progress .stap:nth-child(1) {
+    background-color: #36A734;
+    width: 1.2em;
+    height: 1.2em;
+}
+
+/* Statistieken pagina */
+.stats_visual_section {
+    background-color:#EDEDED ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.stats_visual_section h3 {
+    font-size: 20px;
+    font-family: 'Bree Serif', serif;
+    color: #3E4F66;
+    padding-bottom: 1rem;
+    font-weight: 300;
+}
+
+.stats_visual_section p {
+    color: #3E4F66;
+    font-size: 32px;
+    font-family: var(--open-sans);
+}
+
+/* ANIMATIONS */
+
+@keyframes grass {
+    form {background-color: var(--yellow-grass);}
+    to {background-color: var(--green-grass);}
+}
+
+.changeGrass::before {
+    animation: grass 1s ease-out 1s forwards;
+}  
+
 fieldset input {
     font-family: 'Bree Serif', serif;
     width: 100%;

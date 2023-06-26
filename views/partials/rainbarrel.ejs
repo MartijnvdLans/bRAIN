@@ -1,0 +1,26 @@
+<% if (userInfo.rainAmount >= 0 && userInfo.rainAmount <= 250) { %>
+    <div class="rainbarrel_visual_ground green"></div>
+<% } else if (userInfo.rainAmount >= 251 && userInfo.rainAmount <= 400) { %>
+    <div class="rainbarrel_visual_ground yellow"></div>
+<% } %>
+<div class="rainbarrel_visual_images">
+    <div class="water-stream"></div>
+    <div class="tap"></div>
+    <div class="tap-side"></div>
+    <div class="tap-tap"></div>
+    <div class="top-barrel">
+        <div class="opening"></div>
+    </div>
+    <div class="barrel">
+        <div class="water" style="height: <%= userInfo.rainAmount %>px;">
+            <div class="water-top"></div>
+        </div>
+        <div class="stripes">
+            <img class="front" src="./images/Front-single.svg" alt="front">
+            <img class="front" src="./images/Front-single.svg" alt="front">
+            <img class="front" src="./images/Front-single.svg" alt="front">
+            <img class="front" src="./images/Front-single.svg" alt="front">
+        </div>
+    </div>
+    
+    </div>

@@ -2,40 +2,26 @@
 <body>
     <main id="rainton">
         <section class="rainbarrel_visual">
+            <%- include('partials/download.ejs') -%>
+            <h1>Regenton 1</h1>
             <div class="rainbarrel_amount">
                 <ul>
                     <li><%= currentDate %></li>
                     <li><%= userInfo.rainAmount %>/400 L</li>
                 </ul>
             </div>
-            <div class="rainbarrel_visual_ground"></div>
-            <div class="rainbarrel_visual_images">
-            <% if (userInfo.rainAmount == 0) { %>
-                <img src="./images/barrel0.svg" alt="Rain barrel level 1">
-            <% } else if (userInfo.rainAmount >= 1 && userInfo.rainAmount <= 100) { %>
-                <img src="./images/barrel1.svg" alt="Rain barrel level 2">
-            <% } else if (userInfo.rainAmount >= 101 && userInfo.rainAmount <= 200) { %>
-                <img src="./images/barrel2.svg" alt="Rain barrel level 3">
-            <% } else if (userInfo.rainAmount >= 101 && userInfo.rainAmount <= 300) { %>
-                <img src="./images/barrel3.svg" alt="Rain barrel level 4">
-            <% } else if (userInfo.rainAmount >= 151 && userInfo.rainAmount <= 400) { %>
-                <img src="./images/barrel4.svg" alt="Rain barrel level 5">
-            <% } %>
-            </div>
+            <%- include('partials/rainbarrel.ejs') -%>
             <!-- <div class="outergraph">
                 <div class="innergraph" id="rain-amount"></div>
             </div> -->
         </section>
-        <section class="visual_button_legen">
 
+        <section class="visual_button_legen">
             <ul>
-              
-              <!-- <li>Hoeveelheid water: <%= userInfo.rainAmount %> Litres</li>
-              <li>Next day of rain: <%= userInfo.nextRainDay %></li>
-              <li>Amount of rain on next rainy day: <%= userInfo.nextRainAmount %> mm</li> -->
               <li id="empty"><button class="leegbutton">Leeg regenton</button></li>
             </ul>
-          </section>
+        </section>
+
         <section class="popup none" id="popup-1">
             <h3>Let op!</h3>
             <p>Je regenton begint vol te raken. Leeg de ton voordat er water wordt verspilt. Als je hem geleegd hebt, klik dan op de ‘Regenton Legen’ knop.</p>

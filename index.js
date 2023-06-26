@@ -94,6 +94,8 @@ app.get('/empty', (req, res) => {
         res.render('empty')
     } else {
         res.render('emptyError')
+    }
+});
       
 app.get('/settings', async (req, res) => {
     const currentPage = 'settings';
@@ -160,18 +162,11 @@ app.get('/offline', (req, res) => {
     res.render('offline')
 })
 
-app.post('/empty', (req, res) => {
-    console.log('Emptying the rain barrel...');
-    userInfo.rainAmount = 100;
-    userInfo.rainBarrelEmptied = true; // Set this to true when the rain barrel is emptied
-    res.status(200).json({ message: "Rain barrel emptied successfully." });
-});
-
-/* app.post('/empty', async (req, res) => {
+app.post('/empty', async (req, res) => {
     try {
         console.log('Emptying the rain barrel...');
         const userInfo = await UserInfo.findOne().sort('-_id').exec();
-        userInfo.rainAmount = 0;
+        userInfo.rainAmount = 100;
         userInfo.rainBarrelEmptied = true; // Set this to true when the rain barrel is emptied
         await userInfo.save();
         res.status(200).json({ message: "Rain barrel emptied successfully." });
@@ -179,7 +174,7 @@ app.post('/empty', (req, res) => {
         console.error(err);
         res.status(500).send({ message: "Failed to empty the rain barrel." });
     }
-}); */
+}); 
 
 // /reset reset alle data.
 app.get('/reset', async (req, res) => {

@@ -54,18 +54,28 @@ emptyButton.addEventListener('click', (e) => {
 });
 
 confirmEmptyButton.addEventListener('click', () => {
+    const water = document.querySelector('.water')
+    const tap = document.querySelector('.tap-tap')
+    const stream = document.querySelector('.water-stream')
+    tap.classList.add('open-tap')
     popup.classList.add('none');
+    stream.classList.add('go-stream');
     grass.classList.add('changeGrass')
+    water.classList.add('empty')
     setTimeout(function(){
-        fetch('/empty', {
-            method: 'POST'
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data.message);
-            window.location.reload();
-        });
-     },3000);
+        stream.classList.add('no-stream');
+        tap.classList.remove('open-tap')
+        setTimeout(function(){
+            fetch('/empty', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                window.location.reload();
+            });
+         },1500);        
+    }, 1500)
 });
 
 cancelButton.addEventListener('click', () => {

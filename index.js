@@ -8,7 +8,7 @@ import { UserInfo } from './functions/db.js';
 import cron from 'node-cron';
 
 const app = express();
-const port = 4600;
+const port = 4400;
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({extended : true}))
 

@@ -92,7 +92,7 @@ app.get('/firstInfo', (req, res) => {
 app.get('/empty', (req, res) => {
     console.log(userInfo.rainAmount)
     if (userInfo.rainAmount > 1) {
-        userInfo.rainAmount = 0
+        userInfo.rainAmount = 100
         console.log(userInfo.rainAmount)
         res.render('empty')
     } else {
@@ -129,7 +129,7 @@ app.get('/offline', (req, res) => {
 
 app.post('/empty', (req, res) => {
     console.log('Emptying the rain barrel...');
-    userInfo.rainAmount = 0;
+    userInfo.rainAmount = 100;
     userInfo.rainBarrelEmptied = true; // Set this to true when the rain barrel is emptied
     res.status(200).json({ message: "Rain barrel emptied successfully." });
 });

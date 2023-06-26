@@ -617,7 +617,8 @@ fieldset .progress .stap:nth-child(1) {
 
 .changeGrass::before {
     animation: grass 1s ease-out 1s forwards;
-  
+}  
+
 fieldset input {
     font-family: 'Bree Serif', serif;
     width: 100%;

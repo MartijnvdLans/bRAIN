@@ -44,6 +44,8 @@ const confirmEmptyButton = document.querySelector('#popup-2 .around button:last-
 const cancelButton = document.querySelector('#popup-2 .around button:first-child');
 const popup = document.querySelector('#popup-2');
 
+const grass = document.querySelector('.rainbarrel_visual_ground')
+
 // When the empty button is clicked, show the popup
 emptyButton.addEventListener('click', (e) => {
     console.log('Empty button clicked');
@@ -52,17 +54,18 @@ emptyButton.addEventListener('click', (e) => {
 });
 
 confirmEmptyButton.addEventListener('click', () => {
-    fetch('/empty', {
-        method: 'POST'
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.message);
-        window.location.reload();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+    popup.classList.add('none');
+    grass.classList.add('changeGrass')
+    setTimeout(function(){
+        fetch('/empty', {
+            method: 'POST'
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
+            window.location.reload();
+        });
+     },3000);
 });
 
 cancelButton.addEventListener('click', () => {

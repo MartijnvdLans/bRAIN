@@ -1,0 +1,20 @@
+<% if (userInfo.rainAmount >= 0 && userInfo.rainAmount <= 250) { %>
+    <div class="rainbarrel_visual_ground green"></div>
+<% } else if (userInfo.rainAmount >= 251 && userInfo.rainAmount <= 400) { %>
+    <div class="rainbarrel_visual_ground yellow"></div>
+<% } %>
+<div class="rainbarrel_visual_images">
+    <img src="./images/back.svg" alt="back barrel">
+    <% if (userInfo.rainAmount == 0) { %>
+        
+    <% } else if (userInfo.rainAmount >= 1 && userInfo.rainAmount <= 100) { %>
+        <img class="water1" src="./images/water.svg" alt="">
+    <% } else if (userInfo.rainAmount >= 101 && userInfo.rainAmount <= 200) { %>
+        <img class="water2"  src="./images/water.svg" alt="">
+    <% } else if (userInfo.rainAmount >= 101 && userInfo.rainAmount <= 300) { %>
+        <img class="water3"  src="./images/water.svg" alt="">
+    <% } else if (userInfo.rainAmount >= 151 && userInfo.rainAmount <= 400) { %>
+        <img class="water4"  src="./images/water.svg" alt="">
+    <% } %>
+    <img class="front_barrel" src="./images/front.svg" alt="front barrel">
+    </div>

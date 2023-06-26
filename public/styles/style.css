@@ -124,11 +124,11 @@ nav ul li:hover a {
 }
 
 .rainbarrel_visual {
-    padding-top: 3rem;
+    padding-top: 1rem;
     margin-bottom: 4rem;
     background-color: #E2F3F4;
     position: relative;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
 }
 
 .rainbarrel_visual_images {
@@ -144,7 +144,8 @@ nav ul li:hover a {
     left: 0;
     right: 0;
     height: 40%;  
-    overflow: hidden;  
+    overflow: hidden; 
+ 
 }
 
 .rainbarrel_visual_ground::after {
@@ -356,6 +357,11 @@ nav ul li:hover a {
     justify-content: center;
 }
 
+.visual_button_legen ul {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
 .outergraph {
     width: 70%;
     height: 70vh;
@@ -390,6 +396,7 @@ nav ul li:hover a {
     font-family: 'Bree Serif', serif;
     font-size: 22px;
     border-radius: 3em;
+    z-index: 10;
 }
 
 

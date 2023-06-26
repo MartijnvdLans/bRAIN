@@ -14,6 +14,7 @@ db.once('open', function() {
 // schema definiëren
 const UserInfoSchema = new mongoose.Schema({
   rainAmount: Number,
+  totalRainCollected: Number,
   waterDrains: Number,
   rainBarrels: Number,
   roofSurface: Number,

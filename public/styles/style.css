@@ -213,6 +213,7 @@ nav ul li:hover a {
     overflow:initial;
     transition: 1.5s;
     transition-timing-function: ease-out;
+    position: absolute;
 }
 
 .stripes {
@@ -278,7 +279,7 @@ nav ul li:hover a {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(120px, 180px);
+    transform: translate(120px, 230px);
 }
 
 .tap-side {
@@ -288,7 +289,7 @@ nav ul li:hover a {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(135px, 165px);
+    transform: translate(135px, 215px);
     border-radius: 5px;
 }
 
@@ -300,16 +301,16 @@ nav ul li:hover a {
     left: 50%;
     top: 50%;
     border-radius: 90% 10px 10px 90%;
-    transform: translate(120px, 160px) rotate(0deg);
+    transform: translate(120px, 210px) rotate(0deg);
     transition: .25s;
 }
 
 .open-tap {
-    transform: translate(120px, 160px) rotate(-20deg);
+    transform: translate(120px, 210px) rotate(-20deg);
 }
 
 .no-stream {
-    transform: translate(137px, 260px)!important;
+    transform: translate(137px, 310px)!important;
     height: 0px!important;
 }
 
@@ -320,12 +321,12 @@ nav ul li:hover a {
     background-color: #3498DB;
     left: 50%;
     top: 50%;
-    transform: translate(137px, 200px);
+    transform: translate(137px, 250px);
     transition: .25s;
 }
 
 .go-stream {
-    transform: translate(137px, 200px);
+    transform: translate(137px, 250px);
     height: 60px;
 }
 

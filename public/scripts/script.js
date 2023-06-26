@@ -47,42 +47,47 @@ const popup = document.querySelector('#popup-2');
 const grass = document.querySelector('.rainbarrel_visual_ground')
 
 // When the empty button is clicked, show the popup
-emptyButton.addEventListener('click', (e) => {
-    console.log('Empty button clicked');
-    e.preventDefault();
-    popup.classList.remove('none');
-});
+if (emptyButton) {
+    emptyButton.addEventListener('click', (e) => {
+        console.log('Empty button clicked');
+        e.preventDefault();
+        popup.classList.remove('none');
+    });
+}
 
-confirmEmptyButton.addEventListener('click', () => {
-    const water = document.querySelector('.water')
-    const tap = document.querySelector('.tap-tap')
-    const stream = document.querySelector('.water-stream')
-    tap.classList.add('open-tap')
-    popup.classList.add('none');
-    stream.classList.add('go-stream');
-    grass.classList.add('changeGrass')
-    water.classList.add('empty')
-    setTimeout(function(){
-        stream.classList.add('no-stream');
-        tap.classList.remove('open-tap')
+if (confirmEmptyButton) {
+    confirmEmptyButton.addEventListener('click', () => {
+        const water = document.querySelector('.water')
+        const tap = document.querySelector('.tap-tap')
+        const stream = document.querySelector('.water-stream')
+        tap.classList.add('open-tap')
+        popup.classList.add('none');
+        stream.classList.add('go-stream');
+        grass.classList.add('changeGrass')
+        water.classList.add('empty')
         setTimeout(function(){
-            fetch('/empty', {
-                method: 'POST'
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message);
-                window.location.reload();
-            });
-         },1500);        
-    }, 1500)
-});
+            stream.classList.add('no-stream');
+            tap.classList.remove('open-tap')
+            setTimeout(function(){
+                fetch('/empty', {
+                    method: 'POST'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.message);
+                    window.location.reload();
+                });
+             },1500);        
+        }, 1500)
+    });
+}
 
-cancelButton.addEventListener('click', () => {
-    console.log('Cancel button clicked');
-    popup.classList.add('none');
-});
-
+if (cancelButton) {
+    cancelButton.addEventListener('click', () => {
+        console.log('Cancel button clicked');
+        popup.classList.add('none');
+    });
+}
 
 
 const fieldset1 = document.getElementById('fieldset1');
@@ -107,117 +112,170 @@ const fieldsetStap3 = document.getElementById('fieldset-stap3');
 const fieldsetStap4 = document.getElementById('fieldset-stap4');
 const fieldsetStap5 = document.getElementById('fieldset-stap5');
 
-fieldset1VolgendeKnop.addEventListener('click', function(event) {
-    event.preventDefault();
+if (fieldset1VolgendeKnop) {
+    fieldset1VolgendeKnop.addEventListener('click', function(event) {
+        event.preventDefault();
+    
+        fieldset1.style.display = "none";
+        fieldset2.style.display = "block";
+    
+        fieldsetStap1.style.width = "0.6em";
+        fieldsetStap1.style.height = "0.6em";
+        fieldsetStap1.style.backgroundColor = "#EDEDED";
+        fieldsetStap2.style.width = "1.2em";
+        fieldsetStap2.style.height = "1.2em";
+        fieldsetStap2.style.backgroundColor = "#36A734";
+    });
+}
 
-    fieldset1.style.display = "none";
-    fieldset2.style.display = "block";
+if (fieldset2TerugKnop) {
+    fieldset2TerugKnop.addEventListener('click', function(event) {
+        event.preventDefault();
+    
+        fieldset1.style.display = "block";
+        fieldset2.style.display = "none";
+    
+        fieldsetStap2.style.width = "0.6em";
+        fieldsetStap2.style.height = "0.6em";
+        fieldsetStap2.style.backgroundColor = "#EDEDED";
+        fieldsetStap1.style.width = "1.2em";
+        fieldsetStap1.style.height = "1.2em";
+        fieldsetStap1.style.backgroundColor = "#36A734";
+    });
+}
 
-    fieldsetStap1.style.width = "0.6em";
-    fieldsetStap1.style.height = "0.6em";
-    fieldsetStap1.style.backgroundColor = "#EDEDED";
-    fieldsetStap2.style.width = "1.2em";
-    fieldsetStap2.style.height = "1.2em";
-    fieldsetStap2.style.backgroundColor = "#36A734";
-});
+if (fieldset2VolgendeKnop) {
+    fieldset2VolgendeKnop.addEventListener('click', function(event) {
+        event.preventDefault();
+    
+        fieldset2.style.display = "none";
+        fieldset3.style.display = "block";
+    
+        fieldsetStap2.style.width = "0.6em";
+        fieldsetStap2.style.height = "0.6em";
+        fieldsetStap2.style.backgroundColor = "#EDEDED";
+        fieldsetStap3.style.width = "1.2em";
+        fieldsetStap3.style.height = "1.2em";
+        fieldsetStap3.style.backgroundColor = "#36A734";
+    });
+}
 
-fieldset2TerugKnop.addEventListener('click', function(event) {
-    event.preventDefault();
+if (fieldset3TerugKnop) {
+    fieldset3TerugKnop.addEventListener('click', function(event) {
+        event.preventDefault();
+    
+        fieldset2.style.display = "block";
+        fieldset3.style.display = "none";
+    
+        fieldsetStap3.style.width = "0.6em";
+        fieldsetStap3.style.height = "0.6em";
+        fieldsetStap3.style.backgroundColor = "#EDEDED";
+        fieldsetStap2.style.width = "1.2em";
+        fieldsetStap2.style.height = "1.2em";
+        fieldsetStap2.style.backgroundColor = "#36A734";
+    });
+}
 
-    fieldset1.style.display = "block";
-    fieldset2.style.display = "none";
+if (fieldset3VolgendeKnop) {
+    fieldset3VolgendeKnop.addEventListener('click', function(event) {
+        event.preventDefault();
+    
+        fieldset3.style.display = "none";
+        fieldset4.style.display = "block";
+    
+        fieldsetStap3.style.width = "0.6em";
+        fieldsetStap3.style.height = "0.6em";
+        fieldsetStap2.style.backgroundColor = "#EDEDED";
+        fieldsetStap4.style.width = "1.2em";
+        fieldsetStap4.style.height = "1.2em";
+        fieldsetStap4.style.backgroundColor = "#36A734";
+    });
+}
 
-    fieldsetStap2.style.width = "0.6em";
-    fieldsetStap2.style.height = "0.6em";
-    fieldsetStap2.style.backgroundColor = "#EDEDED";
-    fieldsetStap1.style.width = "1.2em";
-    fieldsetStap1.style.height = "1.2em";
-    fieldsetStap1.style.backgroundColor = "#36A734";
-});
+if  (fieldset4TerugKnop) {
+    fieldset4TerugKnop.addEventListener('click', function(event) {
+        event.preventDefault();
+    
+        fieldset3.style.display = "block";
+        fieldset4.style.display = "none";
+    
+        fieldsetStap4.style.width = "0.6em";
+        fieldsetStap4.style.height = "0.6em";
+        fieldsetStap4.style.backgroundColor = "#EDEDED";
+        fieldsetStap3.style.width = "1.2em";
+        fieldsetStap3.style.height = "1.2em";
+        fieldsetStap3.style.backgroundColor = "#36A734";
+    });
+}
 
-fieldset2VolgendeKnop.addEventListener('click', function(event) {
-    event.preventDefault();
+if (fieldset4VolgendeKnop) {
+    fieldset4VolgendeKnop.addEventListener('click', function(event) {
+        event.preventDefault();
+    
+        fieldset4.style.display = "none";
+        fieldset5.style.display = "block";
+    
+        fieldsetStap4.style.width = "0.6em";
+        fieldsetStap4.style.height = "0.6em";
+        fieldsetStap4.style.backgroundColor = "#EDEDED";
+        fieldsetStap5.style.width = "1.2em";
+        fieldsetStap5.style.height = "1.2em";
+        fieldsetStap5.style.backgroundColor = "#36A734";
+    });
+}
 
-    fieldset2.style.display = "none";
-    fieldset3.style.display = "block";
+if (fieldset5TerugKnop) {
+    fieldset5TerugKnop.addEventListener('click', function(event) {
+        event.preventDefault();
+    
+        fieldset4.style.display = "block";
+        fieldset5.style.display = "none";
+    
+        fieldsetStap5.style.width = "0.6em";
+        fieldsetStap5.style.height = "0.6em";
+        fieldsetStap5.style.backgroundColor = "#EDEDED";
+        fieldsetStap4.style.width = "1.2em";
+        fieldsetStap4.style.height = "1.2em";
+        fieldsetStap4.style.backgroundColor = "#36A734";
+    });
+}
 
-    fieldsetStap2.style.width = "0.6em";
-    fieldsetStap2.style.height = "0.6em";
-    fieldsetStap2.style.backgroundColor = "#EDEDED";
-    fieldsetStap3.style.width = "1.2em";
-    fieldsetStap3.style.height = "1.2em";
-    fieldsetStap3.style.backgroundColor = "#36A734";
-});
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/serviceWorker.js').then(function(reg) {
+        console.log('Successfully registered service worker', reg);
+    }).catch(function(err) {
+        console.warn('Error whilst registering service worker', err);
+    });
+    }
 
-fieldset3TerugKnop.addEventListener('click', function(event) {
-    event.preventDefault();
+// INSTALLATION
 
-    fieldset2.style.display = "block";
-    fieldset3.style.display = "none";
-
-    fieldsetStap3.style.width = "0.6em";
-    fieldsetStap3.style.height = "0.6em";
-    fieldsetStap3.style.backgroundColor = "#EDEDED";
-    fieldsetStap2.style.width = "1.2em";
-    fieldsetStap2.style.height = "1.2em";
-    fieldsetStap2.style.backgroundColor = "#36A734";
-});
-
-fieldset3VolgendeKnop.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    fieldset3.style.display = "none";
-    fieldset4.style.display = "block";
-
-    fieldsetStap3.style.width = "0.6em";
-    fieldsetStap3.style.height = "0.6em";
-    fieldsetStap2.style.backgroundColor = "#EDEDED";
-    fieldsetStap4.style.width = "1.2em";
-    fieldsetStap4.style.height = "1.2em";
-    fieldsetStap4.style.backgroundColor = "#36A734";
-});
-
-fieldset4TerugKnop.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    fieldset3.style.display = "block";
-    fieldset4.style.display = "none";
-
-    fieldsetStap4.style.width = "0.6em";
-    fieldsetStap4.style.height = "0.6em";
-    fieldsetStap4.style.backgroundColor = "#EDEDED";
-    fieldsetStap3.style.width = "1.2em";
-    fieldsetStap3.style.height = "1.2em";
-    fieldsetStap3.style.backgroundColor = "#36A734";
-});
-
-fieldset4VolgendeKnop.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    fieldset4.style.display = "none";
-    fieldset5.style.display = "block";
-
-    fieldsetStap4.style.width = "0.6em";
-    fieldsetStap4.style.height = "0.6em";
-    fieldsetStap4.style.backgroundColor = "#EDEDED";
-    fieldsetStap5.style.width = "1.2em";
-    fieldsetStap5.style.height = "1.2em";
-    fieldsetStap5.style.backgroundColor = "#36A734";
-});
-
-fieldset5TerugKnop.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    fieldset4.style.display = "block";
-    fieldset5.style.display = "none";
-
-    fieldsetStap5.style.width = "0.6em";
-    fieldsetStap5.style.height = "0.6em";
-    fieldsetStap5.style.backgroundColor = "#EDEDED";
-    fieldsetStap4.style.width = "1.2em";
-    fieldsetStap4.style.height = "1.2em";
-    fieldsetStap4.style.backgroundColor = "#36A734";
-});
+let deferredPrompt;
+const addBtn = document.querySelector(".add-button");
+addBtn.style.display = "none";
 
 
-
+window.addEventListener("beforeinstallprompt", (e) => {
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+    // Update UI to notify the user they can add to home screen
+    addBtn.style.display = "block";
+  
+    addBtn.addEventListener("click", (e) => {
+      // hide our user interface that shows our A2HS button
+      addBtn.style.display = "none";
+      // Show the prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === "accepted") {
+          console.log("User accepted the A2HS prompt");
+        } else {
+          console.log("User dismissed the A2HS prompt");
+        }
+        deferredPrompt = null;
+      });
+    });
+  });

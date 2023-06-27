@@ -245,11 +245,12 @@ window.addEventListener("beforeinstallprompt", (e) => {
   });
 
 
-  window.onload = function() {
-    var svg = document.querySelector('.notification_svg');
-    var modal = document.getElementById('notification_modal');
+(function() {
     
-    if ( svg === null){
+    const svg = document.querySelector('.notification_svg');
+    const modal = document.getElementById('notification_modal');
+    
+    if ( svg === null ){
         return
     }
     
@@ -262,4 +263,4 @@ window.addEventListener("beforeinstallprompt", (e) => {
         modal.classList.remove('visible');
     });
 
-}
+})() //Zelf uitvoerende functie gescoped variabele binnen de functie

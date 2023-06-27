@@ -2,22 +2,25 @@
 <form class="settings" action="/edit" method="POST">
     <section class="formLabel">
         <div>
-            <label for="Dakoppervlak">Aantal m2 dak
+            <label for="Dakoppervlak"><span>Aantal m2 dak</span>
                 <input id="Dakoppervlak" name="Dakoppervlak" type="number" value="<%= userInfo.roofSurface %>" placeholder="<%= userInfo.roofSurface %>">
-                <span>m²</span>
+                <div class="form-label-extra">m²</div>
             </label>
         </div>
     </section>
     <section class="formLabel">
         <div>
-            <label for="Regenpijpen">Aantal regenpijpen</label>
-            <input id="Regenpijpen" name="Regenpijpen" type="number" value="<%= userInfo.waterDrains %>" placeholder="<%= userInfo.waterDrains %>">
+            <label for="Regenpijpen"><span>Aantal regenpijpen</span>
+                <input id="Regenpijpen" name="Regenpijpen" type="number" value="<%= userInfo.waterDrains %>" placeholder="<%= userInfo.waterDrains %>">
+            </label>
         </div>
+        
     </section>
     <section class="formLabel">
         <div>
-            <label for="Regentonnen">Aantal regentonnen</label>
-            <input id="Regentonnen" name="Regentonnen" type="number" value="<%= userInfo.rainBarrels %>" placeholder="<%= userInfo.rainBarrels %>">
+            <label for="Regentonnen"><span>Aantal regentonnen</span>
+                <input id="Regentonnen" name="Regentonnen" type="number" value="<%= userInfo.rainBarrels %>" placeholder="<%= userInfo.rainBarrels %>">
+            </label>
         </div>
     </section>
     <div class="settings_visual_button">

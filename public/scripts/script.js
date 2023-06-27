@@ -390,3 +390,23 @@ window.addEventListener("beforeinstallprompt", (e) => {
           });
     }
   });
+
+
+  window.onload = function() {
+    var svg = document.querySelector('.notification_svg');
+    var modal = document.getElementById('notification_modal');
+    
+    if ( svg === null){
+        return
+    }
+    
+    svg.addEventListener('click', function() {
+        console.log('svg is clicked');
+        modal.classList.add('visible');
+    });
+
+    modal.addEventListener('click', function() {
+        modal.classList.remove('visible');
+    });
+
+}

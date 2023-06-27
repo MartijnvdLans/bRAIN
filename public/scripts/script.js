@@ -55,22 +55,6 @@ if (emptyButton) {
     });
     }
 
-    if (confirmEmptyButton) {
-        confirmEmptyButton.addEventListener('click', () => {
-            fetch('/empty', {
-                method: 'POST'
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message);
-                window.location.reload();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-        }
-
         if (cancelButton) {
             cancelButton.addEventListener('click', () => {
                 console.log('Cancel button clicked');
@@ -226,7 +210,9 @@ if ('serviceWorker' in navigator) {
 
 let deferredPrompt;
 const addBtn = document.querySelector(".add-button");
-addBtn.style.display = "none";
+if (addBtn) {
+    addBtn.style.display = "none";
+}
 
 
 window.addEventListener("beforeinstallprompt", (e) => {
@@ -235,21 +221,25 @@ window.addEventListener("beforeinstallprompt", (e) => {
     // Stash the event so it can be triggered later.
     deferredPrompt = e;
     // Update UI to notify the user they can add to home screen
-    addBtn.style.display = "block";
+    if (addBtn) {
+        addBtn.style.display = "block";
+    }
   
-    addBtn.addEventListener("click", (e) => {
-      // hide our user interface that shows our A2HS button
-      addBtn.style.display = "none";
-      // Show the prompt
-      deferredPrompt.prompt();
-      // Wait for the user to respond to the prompt
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === "accepted") {
-          console.log("User accepted the A2HS prompt");
-        } else {
-          console.log("User dismissed the A2HS prompt");
-        }
-        deferredPrompt = null;
-      });
-    });
+    if (addBtn) {
+        addBtn.addEventListener("click", (e) => {
+            // hide our user interface that shows our A2HS button
+            addBtn.style.display = "none";
+            // Show the prompt
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === "accepted") {
+                console.log("User accepted the A2HS prompt");
+              } else {
+                console.log("User dismissed the A2HS prompt");
+              }
+              deferredPrompt = null;
+            });
+          });
+    }
   });

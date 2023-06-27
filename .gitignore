@@ -1,8 +1,4 @@
 .DS_Store
 .vscode
 node_modules
-<<<<<<< HEAD
 .env
-=======
-.env
->>>>>>> parent of 4fdfdaa (Delete .gitignore)

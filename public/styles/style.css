@@ -125,7 +125,7 @@ nav ul li:hover a {
 
 .rainbarrel_visual {
     padding-top: 1rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
     background-color: #E2F3F4;
     position: relative;
     padding-bottom: 1.5rem;
@@ -189,10 +189,6 @@ nav ul li:hover a {
     position: absolute;
     bottom: 30px;
     left: 0;
-}
-
-.rainbarrel_visual svg {
-    height: 100%;
 }
 
 .barrel {
@@ -474,6 +470,14 @@ nav ul li:hover a {
 
 /* gegevens */
 
+.stats_h2 {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 29px;
+    color: #3E4F66;
+    font-family: 'Bree Serif', serif;
+}
+
 .formLabel h2 {
     text-align: center;
     margin-top: 2rem;
@@ -506,7 +510,7 @@ nav ul li:hover a {
 }
 
 
-.formLabel span {
+.formLabel .form-label-extra {
     position: absolute;
     bottom: 30px;
     right: 0px;
@@ -526,6 +530,12 @@ nav ul li:hover a {
     font-size: 22px;
 }
 
+.formLabel span {
+    display: block;
+    text-align: left;
+    width:100%;
+}
+
 .formLabel input {
     outline: none;
     border: none;
@@ -533,10 +543,11 @@ nav ul li:hover a {
     font-size: 20px;
     background-color: #EDEDED;
     margin: .5em 0;
-    width: 80%;
+    width: 100%;
     font-weight: bold;
     color: #3E4F66;
     border-radius: .5rem;
+    
 }
 
 
@@ -781,12 +792,14 @@ fieldset .progress .stap:nth-child(1) {
     color: #3E4F66;
     padding-bottom: 1rem;
     font-weight: 300;
+    margin: 0;
 }
 
 .stats_visual_section p {
     color: #3E4F66;
     font-size: 32px;
     font-family: var(--open-sans);
+    margin: 0;
 }
 
 /* ANIMATIONS */
@@ -915,4 +928,97 @@ label[for=boardingDak], label[for=boardingPijpen], label[for=boardingTonnen] {
     height: 1em;
     width: 0.2em;
     background-color: var(--light-blue);
+}
+
+.notification_svg {
+    position: absolute;
+    top: 0;
+    right:0;
+    width: 40px;
+    margin: .5rem;
+    background-color: transparent;
+}
+
+.notification_svg svg {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+.notification_svg::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: rgb(255, 86, 86);
+    display: block;
+    position: absolute;
+    left:0;
+    bottom: 5px;
+    border-radius: 50%;
+}
+
+
+/* Notification */
+
+.modal {
+    pointer-events: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    font-family: 'Bree Serif', serif;
+    opacity: 0;
+    transition: .3s .3s ease-out;
+}
+
+.modal.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transition: .3s ease-out;
+}
+
+.modal.visible .modal-content {
+    transform: translateY(0%);
+    transition: .3s ease-out;
+}
+
+.modal-content {
+    background-color: #fefefe;
+     /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%; /* Could be more or less, depending on screen size */
+    transition: .3s ease-in;
+    transform: translateY(-100%); /* Hidden by default */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+dialog h4 {
+    font-size: 1.5rem;
+}
+
+dialog p {
+    font-size: 18px;
+    border-bottom: 1px solid #E5E5E5;
+    border-top: 1px solid #E5E5E5;
+    padding: 5px 0px 5px 0px;
+    margin-top: .5rem;
 }

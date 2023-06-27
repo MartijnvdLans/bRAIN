@@ -175,8 +175,6 @@ function validateForm() {
     
     return isValid;
   }
-  
-}
 
 if (confirmEmptyButton) {
     confirmEmptyButton.addEventListener('click', () => {
@@ -205,6 +203,8 @@ if (confirmEmptyButton) {
     });
 }
 
+
+
 if (cancelButton) {
     cancelButton.addEventListener('click', () => {
         console.log('Cancel button clicked');
@@ -213,155 +213,6 @@ if (cancelButton) {
 }
 
 
-const fieldset1 = document.getElementById('fieldset1');
-const fieldset2 = document.getElementById('fieldset2');
-const fieldset3 = document.getElementById('fieldset3');
-const fieldset4 = document.getElementById('fieldset4');
-const fieldset5 = document.getElementById('fieldset5');
-
-const fieldset1VolgendeKnop = document.getElementById('fieldset1-volgende-knop');
-const fieldset2TerugKnop = document.getElementById('fieldset2-terug-knop');
-const fieldset2VolgendeKnop = document.getElementById('fieldset2-volgende-knop');
-const fieldset3TerugKnop = document.getElementById('fieldset3-terug-knop');
-const fieldset3VolgendeKnop = document.getElementById('fieldset3-volgende-knop');
-const fieldset4TerugKnop = document.getElementById('fieldset4-terug-knop');
-const fieldset4VolgendeKnop = document.getElementById('fieldset4-volgende-knop');
-const fieldset5TerugKnop = document.getElementById('fieldset5-terug-knop');
-const fieldset5VolgendeKnop = document.getElementById('fieldset5-volgende-knop');
-
-const fieldsetStap1 = document.getElementById('fieldset-stap1');
-const fieldsetStap2 = document.getElementById('fieldset-stap2');
-const fieldsetStap3 = document.getElementById('fieldset-stap3');
-const fieldsetStap4 = document.getElementById('fieldset-stap4');
-const fieldsetStap5 = document.getElementById('fieldset-stap5');
-
-if (fieldset1VolgendeKnop) {
-    fieldset1VolgendeKnop.addEventListener('click', function(event) {
-        event.preventDefault();
-    
-        fieldset1.style.display = "none";
-        fieldset2.style.display = "block";
-    
-        fieldsetStap1.style.width = "0.6em";
-        fieldsetStap1.style.height = "0.6em";
-        fieldsetStap1.style.backgroundColor = "#EDEDED";
-        fieldsetStap2.style.width = "1.2em";
-        fieldsetStap2.style.height = "1.2em";
-        fieldsetStap2.style.backgroundColor = "#36A734";
-    });
-}
-
-if (fieldset2TerugKnop) {
-    fieldset2TerugKnop.addEventListener('click', function(event) {
-        event.preventDefault();
-    
-        fieldset1.style.display = "block";
-        fieldset2.style.display = "none";
-    
-        fieldsetStap2.style.width = "0.6em";
-        fieldsetStap2.style.height = "0.6em";
-        fieldsetStap2.style.backgroundColor = "#EDEDED";
-        fieldsetStap1.style.width = "1.2em";
-        fieldsetStap1.style.height = "1.2em";
-        fieldsetStap1.style.backgroundColor = "#36A734";
-    });
-}
-
-if (fieldset2VolgendeKnop) {
-    fieldset2VolgendeKnop.addEventListener('click', function(event) {
-        event.preventDefault();
-    
-        fieldset2.style.display = "none";
-        fieldset3.style.display = "block";
-    
-        fieldsetStap2.style.width = "0.6em";
-        fieldsetStap2.style.height = "0.6em";
-        fieldsetStap2.style.backgroundColor = "#EDEDED";
-        fieldsetStap3.style.width = "1.2em";
-        fieldsetStap3.style.height = "1.2em";
-        fieldsetStap3.style.backgroundColor = "#36A734";
-    });
-}
-
-if (fieldset3TerugKnop) {
-    fieldset3TerugKnop.addEventListener('click', function(event) {
-        event.preventDefault();
-    
-        fieldset2.style.display = "block";
-        fieldset3.style.display = "none";
-    
-        fieldsetStap3.style.width = "0.6em";
-        fieldsetStap3.style.height = "0.6em";
-        fieldsetStap3.style.backgroundColor = "#EDEDED";
-        fieldsetStap2.style.width = "1.2em";
-        fieldsetStap2.style.height = "1.2em";
-        fieldsetStap2.style.backgroundColor = "#36A734";
-    });
-}
-
-if (fieldset3VolgendeKnop) {
-    fieldset3VolgendeKnop.addEventListener('click', function(event) {
-        event.preventDefault();
-    
-        fieldset3.style.display = "none";
-        fieldset4.style.display = "block";
-    
-        fieldsetStap3.style.width = "0.6em";
-        fieldsetStap3.style.height = "0.6em";
-        fieldsetStap2.style.backgroundColor = "#EDEDED";
-        fieldsetStap4.style.width = "1.2em";
-        fieldsetStap4.style.height = "1.2em";
-        fieldsetStap4.style.backgroundColor = "#36A734";
-    });
-}
-
-if  (fieldset4TerugKnop) {
-    fieldset4TerugKnop.addEventListener('click', function(event) {
-        event.preventDefault();
-    
-        fieldset3.style.display = "block";
-        fieldset4.style.display = "none";
-    
-        fieldsetStap4.style.width = "0.6em";
-        fieldsetStap4.style.height = "0.6em";
-        fieldsetStap4.style.backgroundColor = "#EDEDED";
-        fieldsetStap3.style.width = "1.2em";
-        fieldsetStap3.style.height = "1.2em";
-        fieldsetStap3.style.backgroundColor = "#36A734";
-    });
-}
-
-if (fieldset4VolgendeKnop) {
-    fieldset4VolgendeKnop.addEventListener('click', function(event) {
-        event.preventDefault();
-    
-        fieldset4.style.display = "none";
-        fieldset5.style.display = "block";
-    
-        fieldsetStap4.style.width = "0.6em";
-        fieldsetStap4.style.height = "0.6em";
-        fieldsetStap4.style.backgroundColor = "#EDEDED";
-        fieldsetStap5.style.width = "1.2em";
-        fieldsetStap5.style.height = "1.2em";
-        fieldsetStap5.style.backgroundColor = "#36A734";
-    });
-}
-
-if (fieldset5TerugKnop) {
-    fieldset5TerugKnop.addEventListener('click', function(event) {
-        event.preventDefault();
-    
-        fieldset4.style.display = "block";
-        fieldset5.style.display = "none";
-    
-        fieldsetStap5.style.width = "0.6em";
-        fieldsetStap5.style.height = "0.6em";
-        fieldsetStap5.style.backgroundColor = "#EDEDED";
-        fieldsetStap4.style.width = "1.2em";
-        fieldsetStap4.style.height = "1.2em";
-        fieldsetStap4.style.backgroundColor = "#36A734";
-    });
-}
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/serviceWorker.js').then(function(reg) {

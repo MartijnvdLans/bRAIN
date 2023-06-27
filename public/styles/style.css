@@ -385,7 +385,7 @@ nav ul li:hover a {
 }
 
 #rainton section:nth-child(2) {
-    margin-top: 1em;
+    margin-top: -2em;
 }
 
 #rainton section:nth-child(2) button {
@@ -548,7 +548,6 @@ nav ul li:hover a {
     font-family: 'Bree Serif', serif;
     font-size: 22px;
     border-radius: 3em;
-    width: 50%;
 }
 
 .popup { 
@@ -662,12 +661,18 @@ fieldset .volgende-button {
     background-color: var(#3498DB);
 }
 
+h2 {
+    padding: 1em;
+    text-align: center;
+}
+
 fieldset h2 {
     text-align: left;
     color: var(--dark-blue);
     font-family: 'Bree Serif', serif;
     font-size: 2em;
     font-weight: 400;
+    padding: 0;
 }
 
 fieldset label {

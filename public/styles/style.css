@@ -847,8 +847,31 @@ label[for=boardingDak], label[for=boardingPijpen], label[for=boardingTonnen] {
     font-size: 1.4em;
 }
 
+/* OFFLINE */
 
+#offline {
+    min-height: 100vh;
+}
 
+.offline {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}
+
+.offline img {
+    width: 200px;
+    margin-bottom: 1em;
+    opacity: .4;
+}
+
+.offline p {
+    font-weight: bold;
+    color: #aaa;
+}
 
 
 /* Statistieken pagina */

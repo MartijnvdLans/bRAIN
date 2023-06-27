@@ -165,7 +165,8 @@ app.post('/edit', async (req, res) => {
 });
 
 app.get('/offline', (req, res) => {
-    res.render('offline')
+    const currentPage = 'home'
+    res.render('offline', { currentPage })
 })
 
 app.post('/empty', async (req, res) => {

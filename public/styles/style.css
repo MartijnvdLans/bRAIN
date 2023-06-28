@@ -624,7 +624,20 @@ ul {
 }
 
 
+/*regen */
+.regen-gif {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    width: 100%;
+}
 
+.regen-gif.show {
+    opacity: .2; /* visible when the 'show' class is added */
+}
 
 
 .onboarding {

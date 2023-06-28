@@ -119,6 +119,16 @@ const terugButtons = document.querySelectorAll('.terug-button');
     });
 });
 
+function updateProgress() {
+    stappen.forEach((stap, index) => {
+        if (index <= currentFieldsetIndex) {
+            stap.classList.add('current');
+        } else {
+            stap.classList.remove('current');
+        }
+    });
+}
+
 const rondAfButton = document.getElementById('rondaf-button');
 if (rondAfButton) {
   rondAfButton.addEventListener('click', function(event) {

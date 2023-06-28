@@ -37,7 +37,7 @@ let userInfo = {
     "rainBarrelEmptied": false,
 }
 
-  app.get('/', async (req, res) => {
+app.get('/', async (req, res) => {
     const currentPage = 'home'
     let options = { day: 'numeric', month: 'long', year: 'numeric' };
     let currentDate = new Date().toLocaleDateString('nl-NL', options);
@@ -45,14 +45,20 @@ let userInfo = {
         // Get the most recent UserInfo from the database
         const userInfo = await UserInfo.findOne().sort('-_id').exec();
         
-        if (userInfo) { // check if userInfo is not null
+        if (userInfo) {
+            // Get weather data
+            const weatherData = await getWeatherData(52.37, 4.89, 'precipitation_sum', 'Europe/Berlin');
+
+            // Check if there's more than 1mm of rain
+            const isRaining = weatherData.daily.precipitation_sum[0] > 1;
+            
             console.log(`Rendering index page with rain amount: ${userInfo.rainAmount}`);
             if (userInfo.rainBarrels == null) {
-                res.render('zero', { currentDate: currentDate })
+                res.render('zero', { currentDate: currentDate, isRaining: isRaining })
             } else {
-                res.render('index', { userInfo: userInfo, currentDate: currentDate, currentPage })
+                res.render('index', { userInfo: userInfo, currentDate: currentDate, currentPage, isRaining: isRaining })
             }
-        } else { // in case userInfo is null
+        } else { 
             res.render('zero', { currentDate: currentDate }) 
         }
     } catch (err) {

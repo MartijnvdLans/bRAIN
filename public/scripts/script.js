@@ -250,22 +250,23 @@ window.addEventListener("beforeinstallprompt", (e) => {
   });
 
 
-(function() {
-    
+  (function() {
     const svg = document.querySelector('.notification_svg');
     const modal = document.getElementById('notification_modal');
     
-    if ( svg === null ){
+    if (svg === null){
         return
     }
     
     svg.addEventListener('click', function() {
         console.log('svg is clicked');
         modal.classList.add('visible');
+        svg.classList.add('clicked'); // add this line
     });
 
     modal.addEventListener('click', function() {
         modal.classList.remove('visible');
+        // If you want the notification dot to reappear when the modal is closed, uncomment the line below
+        // svg.classList.remove('clicked');
     });
-
 })() //Zelf uitvoerende functie gescoped variabele binnen de functie

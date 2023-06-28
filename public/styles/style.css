@@ -928,6 +928,8 @@ label[for=boardingDak], label[for=boardingPijpen], label[for=boardingTonnen] {
     background-color: var(--light-blue);
 }
 
+/* Notification */
+
 .notification_svg {
     position: fixed;
     top: 0;
@@ -955,13 +957,14 @@ label[for=boardingDak], label[for=boardingPijpen], label[for=boardingTonnen] {
     border-radius: 50%;
 }
 
-
-/* Notification */
+.notification_svg.clicked::after {
+    display: none !important;
+}
 
 .modal {
     pointer-events: none;
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 5; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */

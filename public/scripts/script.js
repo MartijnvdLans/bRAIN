@@ -68,17 +68,7 @@ if (emptyButton) {
 
 const fieldsets = document.querySelectorAll('fieldset');
 const stappen = document.querySelectorAll('.stap');
-let currentFieldsetIndex = 0;
-
-function updateProgress() {
-    stappen.forEach((stap, index) => {
-      if (index === currentFieldsetIndex) {
-        stap.classList.add('current');
-      } else {
-        stap.classList.remove('current');
-      }
-    });
-  }    
+let currentFieldsetIndex = 0;   
 
 function showFieldset(index) {
     fieldsets.forEach((fieldset, i) => {
@@ -141,7 +131,6 @@ if (rondAfButton) {
 });
 }
 
-
 function validateForm() {
     const currentFieldset = fieldsets[currentFieldsetIndex];
     const inputs = currentFieldset.querySelectorAll('input');
@@ -159,6 +148,12 @@ function validateForm() {
     
     return isValid;
   }
+
+
+
+  
+
+
 
 if (confirmEmptyButton) {
     confirmEmptyButton.addEventListener('click', () => {

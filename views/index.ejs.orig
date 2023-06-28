@@ -1,0 +1,50 @@
+<%- include('partials/head.ejs') -%>
+<body>
+    <main id="rainton">
+        <section class="rainbarrel_visual">
+            <%- include('partials/notification.ejs') -%>
+            <h1>Regenton 1</h1>
+            <div class="rainbarrel_amount">
+                <ul>
+                    <li><%= currentDate %></li>
+                    <li><%= userInfo.rainAmount %>/400 L</li>
+                </ul>
+            </div>
+            <%- include('partials/rainbarrel.ejs') -%>
+        </section>
+
+        <section class="visual_button_legen">
+            <ul>
+              <li id="empty"><button class="leegbutton">Leeg regenton</button></li>
+            </ul>
+        </section>
+
+        <section class="popup none" id="popup-1">
+            <h3>Let op!</h3>
+            <p>Je regenton begint vol te raken. Leeg de ton voordat er water wordt verspilt. Als je hem geleegd hebt, klik dan op de ‘Regenton Legen’ knop.</p>
+            <button>Oke</button>
+        </section>
+        <section class="popup none" id="popup-2">
+            <h3>Rainton legen!</h3>
+            <p>Je staat op het punt je Rainton te legen! Doe dit pas als de ton echt geleegd is!</p>
+            <div class="around">
+                <button>Wacht</button>
+                <button>Leeg nu!</button>
+            </div>
+        </section>
+        <section class="popup none" id="popup-3">
+            <h3>Let op!</h3>
+            <p>Je regenton is al leeg! Wacht totdat je regenton gevuld is voor je deze gaat legen!</p>
+            <button>Oke</button>
+        </section>
+<<<<<<< HEAD
+        <img id="rainGif" class="regen-gif <%= isRaining ? 'show' : '' %>" src="./images/rain-gif.gif">
+=======
+        <!-- <img src="./images/rain-gif.gif"> -->
+>>>>>>> 18f10609e8f37e4568e290551f84750bae799bd3
+        
+    </main>
+    <script src="scripts/script.js"></script>
+</body>
+<%- include('partials/footer.ejs') -%>
+</html>

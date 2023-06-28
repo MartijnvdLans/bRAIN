@@ -745,20 +745,6 @@ fieldset .progress {
     margin: auto;
 }
 
-fieldset .progress .stap {
-    display: flex;
-    background-color: #EDEDED;
-    width: 0.6em;
-    height: 0.6em;
-    border-radius: 100em;
-}
-
-fieldset .progress .stap:nth-child(1) {
-    background-color: #36A734;
-    width: 1.2em;
-    height: 1.2em;
-}
-
 /* Statistieken pagina */
 .stats_visual_section {
     background-color:#EDEDED ;
@@ -826,7 +812,6 @@ label[for=boardingDak], label[for=boardingPijpen], label[for=boardingTonnen] {
 
 
 .stap {
-    display: flex;
     background-color: #EDEDED;
     width: 0.6em;
     height: 0.6em;

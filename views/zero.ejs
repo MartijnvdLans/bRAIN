@@ -1,6 +1,6 @@
 <%- include('partials/head.ejs') -%>
 <body>
-    <main>
+    <main id="zero">
         <section>
             <form class="onboarding" action="/firstInfo" method="POST">
                 <fieldset id="fieldset1">
@@ -13,7 +13,7 @@
                         <label for="volgende">Welkom bij bRAIN! Dit is een app waarin je makkelijk kan zien wanneer je regenton vol raakt. De app geeft je een tijdige waarschuwing wanneer dit gebeurt.</label>
                         <button class="volgende-button" id="fieldset1-volgende-button">Volgende</button>
                         <div class="progress">
-                            <div class="stap"></div>
+                            <div class="stap current"></div>
                             <div class="stap"></div>
                             <div class="stap"></div>
                             <div class="stap"></div>
@@ -34,8 +34,8 @@
                             <button class="volgende-button" id="fieldset2-volgende-button">Volgende</button>
                         </div>
                         <div class="progress">
-                            <div class="stap"></div>
-                            <div class="stap"></div>
+                            <div class="stap passed"></div>
+                            <div class="stap current"></div>
                             <div class="stap"></div>
                             <div class="stap"></div>
                             <div class="stap"></div>
@@ -58,9 +58,9 @@
                             <button class="volgende-button" id="fieldset3-volgende-button">Volgende</button>
                         </div>
                         <div class="progress">
-                            <div class="stap"></div>
-                            <div class="stap"></div>
-                            <div class="stap"></div>
+                            <div class="stap passed"></div>
+                            <div class="stap passed"></div>
+                            <div class="stap current"></div>
                             <div class="stap"></div>
                             <div class="stap"></div>
                         </div>
@@ -82,10 +82,10 @@
                             <button class="volgende-button" id="fieldset4-volgende-button">Volgende</button>
                         </div>
                         <div class="progress">
-                            <div class="stap"></div>
-                            <div class="stap"></div>
-                            <div class="stap"></div>
-                            <div class="stap"></div>
+                            <div class="stap passed"></div>
+                            <div class="stap passed"></div>
+                            <div class="stap passed"></div>
+                            <div class="stap current"></div>
                             <div class="stap"></div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                         <p>Om uit te rekenen hoeveel water er per dag ongeveer in jou regenton terecht komt, hebben we wat informatie van je nodig.</p>
                     </div>
                     <div class="text-label">
-                        <label for="boardingTonnen">Hoeveel tonnen zijn op deze regenpijnpen aangesloten?</label>
+                        <label for="boardingTonnen">Hoeveel tonnen zijn op deze regenpijpen aangesloten?</label>
                         <input type="number" id="boardingTonnen" name="boardingTonnen" required>
                         <span class="error-message"></span>
                     </div>
@@ -106,11 +106,11 @@
                             <button class="rondaf-button" id="rondaf-button">Rond Af</button>
                         </div>
                         <div class="progress">
-                            <div class="stap"></div>
-                            <div class="stap"></div>
-                            <div class="stap"></div>
-                            <div class="stap"></div>
-                            <div class="stap"></div>
+                            <div class="stap passed"></div>
+                            <div class="stap passed"></div>
+                            <div class="stap passed"></div>
+                            <div class="stap passed"></div>
+                            <div class="stap current"></div>
                         </div>
                     </div>
                 </fieldset>

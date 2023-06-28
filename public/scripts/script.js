@@ -80,7 +80,7 @@ function showFieldset(index) {
         }
     });
 
-    updateProgress(); // Roep de updateProgress() functie aan
+    // updateProgress(); // Roep de updateProgress() functie aan
 }
 
 function nextFieldset() {
@@ -90,7 +90,7 @@ function nextFieldset() {
       if (isFormValid) {
         currentFieldsetIndex++;
         showFieldset(currentFieldsetIndex);
-        updateProgress();
+        // updateProgress();
       } 
     }
   }  
@@ -99,7 +99,7 @@ function previousFieldset() {
     if (currentFieldsetIndex > 0) {
         currentFieldsetIndex--;
         showFieldset(currentFieldsetIndex);
-        updateProgress();
+        // updateProgress();
     }
 }
 
@@ -119,15 +119,15 @@ const terugButtons = document.querySelectorAll('.terug-button');
     });
 });
 
-function updateProgress() {
-    stappen.forEach((stap, index) => {
-        if (index <= currentFieldsetIndex) {
-            stap.classList.add('current');
-        } else {
-            stap.classList.remove('current');
-        }
-    });
-}
+// function updateProgress() {
+//     stappen.forEach((stap, index) => {
+//         if (index <= currentFieldsetIndex) {
+//             stap.classList.add('current');
+//         } else {
+//             stap.classList.remove('current');
+//         }
+//     });
+// }
 
 const rondAfButton = document.getElementById('rondaf-button');
 if (rondAfButton) {

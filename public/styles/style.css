@@ -119,6 +119,10 @@ main {
     padding-bottom: 85px;
 }
 
+#zero {
+    padding-bottom: 0;
+}
+
 .savedMain {
     padding-top: 0;
 }
@@ -849,7 +853,11 @@ label[for=boardingDak], label[for=boardingPijpen], label[for=boardingTonnen] {
     border-radius: 100em;
 }
 
-.stap.current {
+.passed {
+    background-color: #36A734;
+}
+
+.current {
     background-color: #36A734;
     width: 1.2em;
     height: 1.2em;

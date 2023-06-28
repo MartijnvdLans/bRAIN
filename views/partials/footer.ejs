@@ -1,14 +1,6 @@
 <footer>
     <nav>
         <ul>
-            <li class="<%= currentPage === 'home' ? 'active' : '' %>">
-                <svg width="34" height="28" viewBox="0 0 34 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="390" height="844" transform="translate(-49 -779)" fill="white"/>
-                    <path d="M7.30762 11.884V23.2307C7.30762 23.4347 7.38866 23.6304 7.53293 23.7746C7.67719 23.9189 7.87286 23.9999 8.07688 23.9999H12.6925V17.4612C12.6925 17.1552 12.814 16.8617 13.0304 16.6453C13.2468 16.4289 13.5403 16.3073 13.8464 16.3073H17.6927C17.9987 16.3073 18.2922 16.4289 18.5086 16.6453C18.725 16.8617 18.8466 17.1552 18.8466 17.4612V23.9999H23.4621C23.6662 23.9999 23.8618 23.9189 24.0061 23.7746C24.1504 23.6304 24.2314 23.4347 24.2314 23.2307V11.884" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M26.5394 13.9996L16.2933 4.19148C16.0529 3.93762 15.4908 3.93473 15.2461 4.19148L5 13.9996M22.6931 10.2975V4.76842H20.3853V8.08587" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>                    
-                <a href="/">Home</a>
-            </li>
             <li class="<%= currentPage === 'settings' ? 'active' : '' %>">
                 <svg width="43" height="22" viewBox="0 0 43 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M29.0975 13.4763L38.1392 4.61914M19.2295 7.42866L25.4031 13.4763L18.8406 7.04771M5.22949 16.8572L15.2434 7.04771" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
@@ -19,7 +11,15 @@
                 </svg>
                 <a href="/settings">Gegevens</a>
             </li>
-            <li class="<%= currentPage === 'stast' ? 'active' : '' %>">
+            <li class="<%= currentPage === 'home' ? 'active' : '' %>">
+                <svg width="34" height="28" viewBox="0 0 34 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="390" height="844" transform="translate(-49 -779)" fill="white"/>
+                    <path d="M7.30762 11.884V23.2307C7.30762 23.4347 7.38866 23.6304 7.53293 23.7746C7.67719 23.9189 7.87286 23.9999 8.07688 23.9999H12.6925V17.4612C12.6925 17.1552 12.814 16.8617 13.0304 16.6453C13.2468 16.4289 13.5403 16.3073 13.8464 16.3073H17.6927C17.9987 16.3073 18.2922 16.4289 18.5086 16.6453C18.725 16.8617 18.8466 17.1552 18.8466 17.4612V23.9999H23.4621C23.6662 23.9999 23.8618 23.9189 24.0061 23.7746C24.1504 23.6304 24.2314 23.4347 24.2314 23.2307V11.884" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M26.5394 13.9996L16.2933 4.19148C16.0529 3.93762 15.4908 3.93473 15.2461 4.19148L5 13.9996M22.6931 10.2975V4.76842H20.3853V8.08587" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>                    
+                <a href="/">Home</a>
+            </li>
+            <li class="<%= currentPage === 'statistics' ? 'active' : '' %>">
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.38715 15.1428H1.47743C1.21375 15.1428 1 15.3187 1 15.5357V22.6071C1 22.8241 1.21375 23 1.47743 23H3.38715C3.65083 23 3.86458 22.8241 3.86458 22.6071V15.5357C3.86458 15.3187 3.65083 15.1428 3.38715 15.1428Z" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M16.7563 10.4286H14.8466C14.5829 10.4286 14.3691 10.6045 14.3691 10.8214V22.6072C14.3691 22.8241 14.5829 23 14.8466 23H16.7563C17.02 23 17.2337 22.8241 17.2337 22.6072V10.8214C17.2337 10.6045 17.02 10.4286 16.7563 10.4286Z" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
@@ -27,15 +27,6 @@
                     <path d="M10.0707 1H8.16102C7.89735 1 7.68359 1.17589 7.68359 1.39286V22.6071C7.68359 22.8241 7.89735 23 8.16102 23H10.0707C10.3344 23 10.5482 22.8241 10.5482 22.6071V1.39286C10.5482 1.17589 10.3344 1 10.0707 1Z" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 <a href="/statistics">Statistieken</a>
-            </li>
-            <li class="<%= currentPage === 'profile' ? 'active' : '' %>">
-                <svg width="30" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M24.1255 5.5C23.9424 8.04187 22.0567 10 20.0005 10C17.9442 10 16.0555 8.0425 15.8755 5.5C15.688 2.85562 17.5236 1 20.0005 1C22.4774 1 24.313 2.90375 24.1255 5.5Z" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M20.0007 14C15.9276 14 12.0107 16.0231 11.0295 19.9631C10.8995 20.4844 11.2264 21 11.762 21H28.2401C28.7757 21 29.1007 20.4844 28.9726 19.9631C27.9914 15.96 24.0745 14 20.0007 14Z" stroke="" stroke-miterlimit="10"/>
-                    <path d="M11.5006 6.62125C11.3543 8.65125 9.8306 10.25 8.1881 10.25C6.5456 10.25 5.01935 8.65188 4.8756 6.62125C4.72622 4.50938 6.20935 3 8.1881 3C10.1668 3 11.65 4.54813 11.5006 6.62125Z" stroke="" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M11.8756 14.125C10.7475 13.6082 9.50499 13.4094 8.18811 13.4094C4.93811 13.4094 1.80686 15.025 1.02249 18.1719C0.919361 18.5882 1.18061 19.0001 1.60811 19.0001H8.62561" stroke="" stroke-miterlimit="10" stroke-linecap="round"/>
-                </svg>
-                <a href="/profile">Profiel</a>
             </li>
         </ul>
     </nav>

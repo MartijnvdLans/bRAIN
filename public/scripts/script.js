@@ -238,3 +238,24 @@ window.addEventListener("beforeinstallprompt", (e) => {
           });
     }
   });
+
+
+(function() {
+    
+    const svg = document.querySelector('.notification_svg');
+    const modal = document.getElementById('notification_modal');
+    
+    if ( svg === null ){
+        return
+    }
+    
+    svg.addEventListener('click', function() {
+        console.log('svg is clicked');
+        modal.classList.add('visible');
+    });
+
+    modal.addEventListener('click', function() {
+        modal.classList.remove('visible');
+    });
+
+})() //Zelf uitvoerende functie gescoped variabele binnen de functie

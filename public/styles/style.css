@@ -115,9 +115,9 @@ nav ul li:hover a {
 
 /* MAIN */
 
-/* main {
-    padding: 1em;
-} */
+main {
+    padding-bottom: 85px;
+}
 
 .savedMain {
     padding-top: 0;
@@ -916,7 +916,7 @@ label[for=boardingDak], label[for=boardingPijpen], label[for=boardingTonnen] {
 }
 
 .notification_svg {
-    position: absolute;
+    position: fixed;
     top: 0;
     right:0;
     width: 40px;

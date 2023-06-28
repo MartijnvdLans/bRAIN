@@ -1,6 +1,7 @@
 <%- include('partials/head.ejs') -%>
 <body>
-    <h2 class="stats_h2">Statistieken</h2>
+    <main>
+        <h2 class="stats_h2">Statistieken</h2>
    <section class="stats_visual_section">
         <h3>Eerst volgende regenval</h3>
         <p><%= userInfo.nextRainDay %></p>
@@ -13,6 +14,8 @@
     <h3>Hoeveelheid water bespaard</h3>
     <p><%= totalRainCollected %> Liters</p>
 </section>
+    </main>
+    
     <script src="scripts/script.js"></script>
 </body>
 <%- include('partials/footer.ejs') -%>

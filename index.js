@@ -10,7 +10,7 @@ import { collectAndStoreRainData } from './functions/collectAndStoreRainData.js'
 import { calculateAndStoreStatistics } from './functions/calculateAndStoreStatistics.js';
 
 const app = express();
-const port = 4400;
+const port = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({extended : true}))
 

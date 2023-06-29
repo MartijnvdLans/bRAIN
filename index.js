@@ -52,6 +52,7 @@ app.get('/', async (req, res) => {
             // Check if there's more than 1mm of rain
             const isRaining = weatherData.daily.precipitation_sum[0] > 1;
             
+            
             console.log(`Rendering index page with rain amount: ${userInfo.rainAmount}`);
             if (userInfo.rainBarrels == null) {
                 res.render('zero', { currentDate: currentDate, isRaining: isRaining })
@@ -63,7 +64,7 @@ app.get('/', async (req, res) => {
         }
     } catch (err) {
         console.log(err);
-        res.status(500).send(err);
+        res.render('error', { message: 'An error occurred while processing your request. Please try again later.' });
     }
 });
 

@@ -15,7 +15,7 @@ Deze app is ontwikkeld met:
 
 Clone de repository
 ```
-git clone https://github.com/Davi9898/bRAIN.git
+git clone https://github.com/MartijnvdLans/bRAIN.git
 ```
 
 Installeer alle packages

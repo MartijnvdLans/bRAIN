@@ -1,17 +1,20 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 dotenv.config();
 
 // Connectie MongoDB
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
   console.log("Connected to the database!");
 });
 
-// schema definiëren
+// schema
 const UserInfoSchema = new mongoose.Schema({
   rainAmount: Number,
   totalRainCollected: Number,
@@ -24,7 +27,7 @@ const UserInfoSchema = new mongoose.Schema({
   nextRainAmount: Number,
 });
 
-// Define a model
-const UserInfo = mongoose.model('UserInfo', UserInfoSchema);
+// Model Definiëren
+const UserInfo = mongoose.model("UserInfo", UserInfoSchema);
 
 export { UserInfo };

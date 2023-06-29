@@ -29,11 +29,10 @@ node start
 ```
 
 ## Design Challenge
-Ontwerp en ontwikkel een Web App die inzicht geeft in je regenton en het legen er van.
+Ontwerp en ontwikkel een Web App die inzicht geeft in de hoeveel water die er op een bepaald moment van de dag in de regenton zit.
 
 ## User Story
-
-## Beschrijving
+Als bewoner, wil ik graag weten wanneer ik mijn regenton moet legen, zodat ik mijn regenton zo efficiënt mogelijk kan gebruiken.
 
 ## API's
 | API | Uitleg |
@@ -41,6 +40,8 @@ Ontwerp en ontwikkel een Web App die inzicht geeft in je regenton en het legen e
 | Open-meteo API | Om het weer op te kunnen halen hebben wij de Open-meteo API gebruik. zo kunnen wij inzien op welke dagen het gaat regenen. |
 
 ## Opdrachtgever
+SPATwater
+Oprichters: Timo van den Berg, Jesse Schoenmakers, Mees van Milligen de Wit
 
 ## Wishlist (MoSCoW)
 Hier zijn we nog niet aan toegekomen maar zou eventueel geimplementeerd kunnen worden
@@ -48,3 +49,8 @@ Hier zijn we nog niet aan toegekomen maar zou eventueel geimplementeerd kunnen w
 - [ ] Mogelijkheid om te kiezen hoe groot je ton is.
 - [ ] ViewTransitionsAPI
 - [ ] MagicLinks inloggen
+
+## Licentie
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+

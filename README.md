@@ -5,6 +5,9 @@
 ## Live Demo
 https://rainton-production.up.railway.app/
 
+## Design Rationale + Productbiografie
+Zijn te vinden in de [wiki](https://github.com/MartijnvdLans/bRAIN/wiki) van deze Repository
+
 ## Installatie
 
 Deze app is ontwikkeld met:
